@@ -80,12 +80,6 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         polygon = new Polygon();
         eraser = new Eraser();
         bucket = new Bucket();
-        curve = new Curve();
-                
-        startPoint = new Point(-1, -1);
-        endPoint = new Point(-1, -1);
-        polygonPoint = new Point();
-        
         buff_img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         this.setSize(width, height);
         this.setLocation(5, 5);
@@ -171,34 +165,23 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     }// </editor-fold>//GEN-END:initComponents
 
     public void ChangeTool(){
-        if(polygon.getStartPoint() != null && !mode.equals("POLYGON")) {
-            line.setPoint(polygonPoint, polygon.getStartPoint());
-            line.draw(g2d);
-            polygon.setStartPoint(null);
+        if(polygon.getStartPoint() != null){
+            if(!mode.equals("POLYGON")){
+                line.setPoint(endPoint, polygon.getStartPoint());
+                line.draw(g2d);
+                repaint();
+                polygon.setPoint(null, null);
+                startPoint = null;
+                endPoint = null;
+            }
         }
-//        if(polygon.getStartPoint() != null){
-//            if(!mode.equals("POLYGON")){
-//                line.setPoint(endPoint, polygon.getStartPoint());
-//                line.draw(g2d);
-//                repaint();
-//                polygon.setPoint(null, null);
-//                line = null;
-//            }
-//        }
-//        else if(curve.getState() != 3){
-//            if(mode.equals("CURVE")){//neu chua co du 2 diem cong ma muon ve duong moi => chon lai vao curve
-//                curve.draw(g2d);
-//                repaint();
-//                curve = null;
-//            }
-//            else {
-//                curve.draw(g2d);
-//                repaint();
-//                curve = null;
-//            }
-//        }
-//        startPoint = null;
-//        endPoint = null;
+        else if(curve != null){
+                curve.draw(g2d);
+                repaint();
+                curve = null;
+                startPoint = null;
+                endPoint = null;
+            } 
     }
     @Override
     public void paintComponent(Graphics g) {
@@ -259,30 +242,22 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 rightTriangle.setStroke(stroke.getStroke());
                 break;
             case "POLYGON":
-//                if(polygon.getStartPoint() == null){//chua su dung polygon
-//                    polygon.setStartPoint(startPoint);
-//                }
-//                line.setStrokeColor(Color.black);
-//                line.setStroke(stroke.getStroke());
-//                if(endPoint != null){
-//                    if(distance(startPoint, polygon.getStartPoint()) < this.r )
-//                        startPoint = polygon.getStartPoint();
-//                    //da ve 1 hoac nhieu duong thang roi => ta se ve duong thang tu diem cuoi duong thang truoc toi diem vua nhan
-//                    Point temp = new Point(startPoint);//endPoint la diem cuoi duong thang trc => chuyen sang startPoint
-//                    startPoint = endPoint;
-//                    endPoint = temp;//diem vua nhan thanh diem cuoi cua duong thang vua ve
-//                    line.setPoint(startPoint, endPoint);
-//                }
-//                else {
-//                    line.setPoint(startPoint, startPoint);//neu chua ve duong thang nao ta ve 1 diem
-//                }
-                if (polygon.getStartPoint() == null) {
+                if(polygon.getStartPoint() == null){//chua su dung polygon
                     polygon.setStartPoint(startPoint);
-                    polygonPoint = e.getPoint();
                 }
                 line.setStrokeColor(Color.black);
-                line.setStroke(stroke.getStroke());
-                line.setPoint(polygonPoint, startPoint);
+                if(endPoint != null){
+                    if(distance(startPoint, polygon.getStartPoint()) < this.r )
+                        startPoint = polygon.getStartPoint();
+                    //da ve 1 hoac nhieu duong thang roi => ta se ve duong thang tu diem cuoi duong thang truoc toi diem vua nhan
+                    Point temp = new Point(startPoint);//endPoint la diem cuoi duong thang trc => chuyen sang startPoint
+                    startPoint = endPoint;
+                    endPoint = temp;//diem vua nhan thanh diem cuoi cua duong thang vua ve
+                    line.setPoint(startPoint, endPoint);
+                }
+                else {
+                    line.setPoint(startPoint, startPoint);//neu chua ve duong thang nao ta ve 1 diem
+                }
                 break;
             case "BUCKET":
                 bucket.addArrPoint(startPoint);
@@ -339,29 +314,19 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 rightTriangle.draw(g2d);
                 break;
             case "POLYGON":
-//                if(endPoint != null){
-//                    line.draw(g2d);//ve khi tha chuot
-//                    if(endPoint.y == polygon.getStartPoint().y && endPoint.x == polygon.getStartPoint().x){
-//                        endPoint = null;
-//                        polygon.setStartPoint(null); 
-//                        startPoint = null;
-//                    }
-//                }
-//                else {
-//                    endPoint = e.getPoint();
-//                    line.draw(g2d);
-//                }
-//                return;
-                if (distance(e.getPoint(), polygon.getStartPoint()) < this.r) {
-                    line.setPoint(polygonPoint, polygon.getStartPoint());
-                    line.draw(g2d);
-                    polygon.setStartPoint(null);
-                    repaint();
-                    return;
+                if(endPoint != null){
+                    line.draw(g2d);//ve khi tha chuot
+                    if(endPoint.y == polygon.getStartPoint().y && endPoint.x == polygon.getStartPoint().x){
+                        endPoint = null;
+                        polygon.setStartPoint(null); 
+                        startPoint = null;
+                    }
                 }
-                line.draw(g2d);
-                polygonPoint = e.getPoint();
-                break;
+                else {
+                    endPoint = e.getPoint();
+                    line.draw(g2d);
+                }
+                return;
             case "CURVE":
                 if(curve != null){
                     endPoint = e.getPoint();
@@ -420,9 +385,10 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 break;
             case "MAGNIFIER":
                 break;
-            case "POLYGON":            
-//                line.setPoint(startPoint, endPoint);
-                line.setPoint(polygonPoint, endPoint);
+            case "POLYGON":   
+                if(distance(endPoint, polygon.getStartPoint()) < this.r )
+                        endPoint = polygon.getStartPoint();
+                line.setPoint(startPoint, endPoint);
                 break;
             case "LINE":
                 line.setPoint(startPoint, endPoint);
