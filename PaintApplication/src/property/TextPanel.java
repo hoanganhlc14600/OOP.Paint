@@ -21,7 +21,7 @@ public class TextPanel extends javax.swing.JPanel {
     private int fontStyle;//kiểu Font chữ
     private int fontSize;//Kích thước chữ
 
-    private boolean isOpaque = true; // >< transparent:trong suốt. liên quan đến vấn đề đoạn văn bản sau và đoạn văn bản trước có phần giao nhau
+    private boolean isOpaque = true ; // >< transparent:trong suốt. liên quan đến vấn đề đoạn văn bản sau và đoạn văn bản trước có phần giao nhau
     private Font font;
 //getter and setter 
 
@@ -247,7 +247,8 @@ public class TextPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (jToggleButton4.isSelected() == true) {
             this.setFontStyle(BOLD + ITALIC);
-        } else {
+        } 
+        else{
             this.setFontStyle(ITALIC);
         }
         this.setFont(fontName, fontStyle, fontSize);
@@ -257,7 +258,7 @@ public class TextPanel extends javax.swing.JPanel {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        this.setOpaque(true);
+        this.setIsOpaque(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
@@ -284,7 +285,7 @@ public class TextPanel extends javax.swing.JPanel {
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
-        this.setOpaque(false);
+        this.setIsOpaque(false);
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
