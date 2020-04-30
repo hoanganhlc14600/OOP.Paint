@@ -45,7 +45,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     private boolean isSaved;
     private Point startPoint,  endPoint, polygonPoint;
     private JLabel jCoordinate;
-    private Line line = new Line();
+    private Line line;
     private Oval oval;
     private Eraser eraser;
     private Rectangle rect;
@@ -166,14 +166,12 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
 
     public void ChangeTool(){
         if(polygon.getStartPoint() != null){
-            if(!mode.equals("POLYGON")){
                 line.setPoint(endPoint, polygon.getStartPoint());
                 line.draw(g2d);
                 repaint();
                 polygon.setPoint(null, null);
                 startPoint = null;
                 endPoint = null;
-            }
         }
         else if(curve != null){
                 curve.draw(g2d);
@@ -246,9 +244,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     polygon.setStartPoint(startPoint);
                 }
                 line.setStrokeColor(Color.black);
+                line.setStroke(stroke.getStroke());
                 if(endPoint != null){
-                    if(distance(startPoint, polygon.getStartPoint()) < this.r )
-                        startPoint = polygon.getStartPoint();
                     //da ve 1 hoac nhieu duong thang roi => ta se ve duong thang tu diem cuoi duong thang truoc toi diem vua nhan
                     Point temp = new Point(startPoint);//endPoint la diem cuoi duong thang trc => chuyen sang startPoint
                     startPoint = endPoint;
@@ -268,10 +265,6 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             case "CURVE":
                 if(curve == null){
                     curve = new Curve();
-                    curve.setStartPoint(null);
-                    curve.setEndPoint(null);
-                }
-                if(curve.getStartPoint() == null){
                     curve.setStrokeColor(Color.black);
                     curve.setStartPoint(startPoint);
                     curve.setStroke(stroke.getStroke());
@@ -316,18 +309,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 rightTriangle.draw(g2d);
                 break;
             case "POLYGON":
-                if(endPoint != null){
-                    line.draw(g2d);//ve khi tha chuot
-                    if(endPoint.y == polygon.getStartPoint().y && endPoint.x == polygon.getStartPoint().x){
-                        endPoint = null;
-                        polygon.setStartPoint(null); 
-                        startPoint = null;
-                    }
-                }
-                else {
-                    endPoint = e.getPoint();
-                    line.draw(g2d);
-                }
+                endPoint = e.getPoint();
+                line.draw(g2d);
                 return;
             case "CURVE":
                 if(curve != null){
@@ -388,9 +371,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             case "MAGNIFIER":
                 break;
             case "POLYGON":   
-                if(distance(endPoint, polygon.getStartPoint()) < this.r )
-                        endPoint = polygon.getStartPoint();
                 line.setPoint(startPoint, endPoint);
+                repaint();
                 break;
             case "LINE":
                 line.setPoint(startPoint, endPoint);

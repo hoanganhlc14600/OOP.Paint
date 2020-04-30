@@ -14,14 +14,15 @@ import java.util.ArrayList;
  * @author Phuc
  */
 public class Polygon extends Shape implements DrawType {
+    public Polygon(){
+        this.setStartPoint(null);
+    }
     private ArrayList<Line> listLine = new ArrayList<>(); //danh sách đường thẳng
 
     public ArrayList<Line> getListLine() { 
         return listLine;
     }
-    public Polygon(){
-        this.startPoint = null;
-    }
+    
     public void addLine(Line line) //thêm đường thẳng vào danh sách
     {
         listLine.add(line);
