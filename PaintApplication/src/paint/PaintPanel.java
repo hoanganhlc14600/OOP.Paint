@@ -43,7 +43,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     Graphics2D g2d, g2; // doi tuong do hoa
     private BufferedImage buff_img; // anh de ve
     private boolean isSaved;
-    private Point startPoint, endPoint, polygonPoint;
+    private Point startPoint, endPoint;
     private JLabel jCoordinate;
     private Line line;
     private Oval oval;
@@ -101,6 +101,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
 
     private void doDrawing(Graphics g) {
         g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.drawImage(buff_img, null, 0, 0);
         switch (mode) {
             case "LINE":

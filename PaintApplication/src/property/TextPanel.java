@@ -174,6 +174,7 @@ public class TextPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTextArea1);
 
         jToggleButton5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jToggleButton5.setSelected(true);
         jToggleButton5.setText("P");
         jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,6 +248,7 @@ public class TextPanel extends javax.swing.JPanel {
         this.setFontStyle(ITALIC);
         this.setFont(fontName, fontStyle, fontSize);
         jTextArea1.setFont(font);
+        jToggleButton5.setSelected(false);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -259,7 +261,8 @@ public class TextPanel extends javax.swing.JPanel {
         this.setFontStyle(PLAIN);
         this.setFont(fontName, fontStyle, fontSize);
         jTextArea1.setFont(font);
-
+        jToggleButton2.setSelected(false);
+        jToggleButton4.setSelected(false);
     }//GEN-LAST:event_jToggleButton5ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
@@ -267,7 +270,7 @@ public class TextPanel extends javax.swing.JPanel {
         this.setFontStyle(BOLD);
         this.setFont(fontName, fontStyle, fontSize);
         jTextArea1.setFont(font);
-
+        jToggleButton5.setSelected(false);
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
