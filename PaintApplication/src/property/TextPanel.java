@@ -245,7 +245,11 @@ public class TextPanel extends javax.swing.JPanel {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
-        this.setFontStyle(ITALIC);
+        if (jToggleButton4.isSelected() == true) {
+            this.setFontStyle(BOLD + ITALIC);
+        } else {
+            this.setFontStyle(ITALIC);
+        }
         this.setFont(fontName, fontStyle, fontSize);
         jTextArea1.setFont(font);
         jToggleButton5.setSelected(false);
@@ -267,10 +271,15 @@ public class TextPanel extends javax.swing.JPanel {
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         // TODO add your handling code here:
-        this.setFontStyle(BOLD);
+        if (jToggleButton2.isSelected() == true) {
+            this.setFontStyle(BOLD + ITALIC);
+        } else {
+            this.setFontStyle(BOLD);
+        }
         this.setFont(fontName, fontStyle, fontSize);
         jTextArea1.setFont(font);
         jToggleButton5.setSelected(false);
+        
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
