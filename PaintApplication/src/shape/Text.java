@@ -34,7 +34,7 @@ public class Text extends Shape {
 
     private JTextPane area;//phần viết
     private Font font; //font chữ
-  
+
     private Point start; //điểm bắt đầu
     private Point finish; //điểm kết thúc
 
@@ -155,10 +155,10 @@ public class Text extends Shape {
         }
     }
 
-    public void draw1(Graphics2D g2d, Graphics g2) {
+    public void draw(Graphics2D g2d, Graphics g2) {
         int[] a = {Math.min(start.x, finish.x), Math.min(start.y, finish.y), Math.max(start.x, finish.x), Math.max(start.y, finish.y)};
 
-        if (isCreated == false ) {
+        if (isCreated == false) {
             if (start != null && finish != null) {
                 g2d.setColor(frameColor);
                 //vẽ hình vuông nhỏ
@@ -183,11 +183,6 @@ public class Text extends Shape {
                 g2d.drawLine(a[2], (a[1] + a[3]) / 2 + EDGE / 2, a[2], a[3] - EDGE / 2);
             }
         }
-    }
-
-    public void draw2(Graphics2D g2d,Graphics g2) {
-        int[] a = {Math.min(start.x, finish.x), Math.min(start.y, finish.y), Math.max(start.x, finish.x), Math.max(start.y, finish.y)};
-
         if (string.equals("") == false) {
             if (isOpaque) {
                 g2.setFont(font);

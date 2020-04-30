@@ -145,8 +145,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 break;
             case "TEXT":
                 if (text != null) {
-                    text.draw1(g2, g2d);
-                    text.draw2(g2, g2d);
+                    text.draw(g2, g2d);
                 }
                 break;
             case "SELECT":
@@ -230,7 +229,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         } else if (text != null) {
             text.setString();
             text.removeArea(this);
-            text.draw2(g2, g2d);
+            text.draw(g2, g2d);
             repaint();
             text = null;
         }
@@ -347,7 +346,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     if (text.checkOverLap() == false) {
                         text.setString();
                         if (text.getString().equals("") == false) {
-                            repaint();
+                           repaint();
                         }
                     }
                     text.removeArea(this);
@@ -546,8 +545,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 if (text != null) {
                     text.setFinish(endPoint);
                 }
-
-                return;
+                break;
         }
         repaint();
     }
