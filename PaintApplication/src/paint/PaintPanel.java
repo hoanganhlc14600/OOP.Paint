@@ -72,6 +72,15 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         this.textPanel = textPanel;
     }
 
+    private boolean testMousePressed(Point p, Point start, Point end) {
+        int a[] = {Math.min(start.x, end.x), Math.min(start.y, end.y), Math.max(start.x, end.x), Math.max(start.y, end.y)};
+        if (p.x > a[0] && p.x < a[2] && p.y > a[1] && p.y < a[3]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public PaintPanel(int width, int height) {
         initComponents();
 
@@ -132,7 +141,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 break;
             case "TEXT":
                 if (text != null) {
-                    text.draw(g2, g2d);
+                    text.draw1(g2, g2d);
+                    text.draw2(g2, g2d);
                 }
                 break;
         }
@@ -198,6 +208,12 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             curve = null;
             startPoint = null;
             endPoint = null;
+        } else if (text != null) {
+            text.setString();
+            text.removeArea(this);
+            text.draw2(g2, g2d);
+            repaint();
+            text = null;
         }
     }
 
@@ -307,8 +323,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     text.setStart(e.getPoint());
                     text.setIsCreated(false);
                 } else {
-                        text.setIsCreated(true);
-                        if (text.checkOverLap() == false) {
+                    text.setIsCreated(true);
+                    if (text.checkOverLap() == false) {
                         text.setString();
                         if (text.getString().equals("") == false) {
                             repaint();

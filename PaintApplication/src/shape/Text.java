@@ -24,7 +24,7 @@ public class Text extends Shape {
 
     private Boolean isOpaque;           //Kiểm tra có làm mờ không?
     private Boolean isCreated = false; //kiểm tra đã được tạo chưa?
-
+    private Boolean change = false;
     private Color fillColor = Color.WHITE;    //màu bên trong khung
     private Color textColor;    //màu chữ
     private Color frameColor;   //màu khung
@@ -34,7 +34,7 @@ public class Text extends Shape {
 
     private JTextPane area;//phần viết
     private Font font; //font chữ
-
+  
     private Point start; //điểm bắt đầu
     private Point finish; //điểm kết thúc
 
@@ -141,11 +141,11 @@ public class Text extends Shape {
     public void setString(String string) {
         this.string = string;
     }
-    
-    public void setString()
-    {
+
+    public void setString() {
         this.string = area.getText();
     }
+
     public Boolean checkOverLap() //kiểm tra xem tung độ,hoành độ của điểm đầu,cuối có trùng nhau k?
     {
         if (start.x == finish.x || start.y == finish.y) {
@@ -155,9 +155,10 @@ public class Text extends Shape {
         }
     }
 
-    public void draw(Graphics2D g2d, Graphics g2) {
+    public void draw1(Graphics2D g2d, Graphics g2) {
         int[] a = {Math.min(start.x, finish.x), Math.min(start.y, finish.y), Math.max(start.x, finish.x), Math.max(start.y, finish.y)};
-        if (isCreated == false) {
+
+        if (isCreated == false ) {
             if (start != null && finish != null) {
                 g2d.setColor(frameColor);
                 //vẽ hình vuông nhỏ
@@ -182,23 +183,27 @@ public class Text extends Shape {
                 g2d.drawLine(a[2], (a[1] + a[3]) / 2 + EDGE / 2, a[2], a[3] - EDGE / 2);
             }
         }
-        if(string.equals("") == false)
-        {
-        if (isOpaque) {
-            g2.setFont(font);
-            g2.setColor(fillColor);
-            g2.fillRect(a[0], a[1], (a[2] - a[0]) , a[3] - a[1]);
-            g2.setColor(textColor);
-            for (String s : string.split("\n"))
-                g2.drawString(s, start.x, start.y += g2d.getFontMetrics().getHeight()); // FontMetricc lấy số liệu của Font chữ
-        }
-        else
-        {
-            g2.setFont(font);
-            g2.setColor(textColor);
-            for (String s : string.split("\n"))
-                g2.drawString(s, a[0], a[1] += g2d.getFontMetrics().getHeight());
-        }
+    }
+
+    public void draw2(Graphics2D g2d,Graphics g2) {
+        int[] a = {Math.min(start.x, finish.x), Math.min(start.y, finish.y), Math.max(start.x, finish.x), Math.max(start.y, finish.y)};
+
+        if (string.equals("") == false) {
+            if (isOpaque) {
+                g2.setFont(font);
+                g2.setColor(fillColor);
+                g2.fillRect(a[0], a[1], (a[2] - a[0]), a[3] - a[1]);
+                g2.setColor(textColor);
+                for (String s : string.split("\n")) {
+                    g2.drawString(s, start.x, start.y += g2d.getFontMetrics().getHeight()); // FontMetricc lấy số liệu của Font chữ
+                }
+            } else {
+                g2.setFont(font);
+                g2.setColor(textColor);
+                for (String s : string.split("\n")) {
+                    g2.drawString(s, a[0], a[1] += g2d.getFontMetrics().getHeight());
+                }
+            }
         }
     }
 }
