@@ -6,7 +6,6 @@
 package property;
 
 import java.awt.Font;
-import java.util.HashSet;
 
 /**
  *
@@ -22,11 +21,11 @@ public class TextPanel extends javax.swing.JPanel {
     private int fontStyle;//kiểu Font chữ
     private int fontSize;//Kích thước chữ
 
-    private boolean isOpaque; // >< transparent:trong suốt. liên quan đến vấn đề đoạn văn bản sau và đoạn văn bản trước có phần giao nhau
+    private boolean isOpaque = true; // >< transparent:trong suốt. liên quan đến vấn đề đoạn văn bản sau và đoạn văn bản trước có phần giao nhau
     private Font font;
 //getter and setter 
 
-    public boolean isIsOpaque() {
+    public boolean getIsOpaque() {
         return isOpaque;
     }
 
@@ -290,7 +289,7 @@ public class TextPanel extends javax.swing.JPanel {
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         // TODO add your handling code here:
-        String s = (String) jComboBox2.getSelectedItem();
+        String s = (String) jComboBox1.getSelectedItem();
         this.setFontName(s);
         this.setFont(fontName, fontStyle, fontSize);
         jTextArea1.setFont(font);

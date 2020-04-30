@@ -47,6 +47,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         jScrollPane.setViewportView(backgroundPanel);
         paintPanel.setCoordinate(jCoordinate);
         paintPanel.setStroke(stroke1);
+        paintPanel.setTextPanel(textPanel1);
         paintPanel.addPropertyChangeListener(new PropertyChangeListener(){
             @Override
             public void propertyChange(PropertyChangeEvent evt) {

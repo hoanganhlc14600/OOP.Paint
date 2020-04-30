@@ -25,7 +25,7 @@ public class Text extends Shape {
     private Boolean isOpaque;           //Kiểm tra có làm mờ không?
     private Boolean isCreated = false; //kiểm tra đã được tạo chưa?
 
-    private Color fillColor;    //màu bên trong khung
+    private Color fillColor = Color.WHITE;    //màu bên trong khung
     private Color textColor;    //màu chữ
     private Color frameColor;   //màu khung
 
@@ -141,7 +141,11 @@ public class Text extends Shape {
     public void setString(String string) {
         this.string = string;
     }
-
+    
+    public void setString()
+    {
+        this.string = area.getText();
+    }
     public Boolean checkOverLap() //kiểm tra xem tung độ,hoành độ của điểm đầu,cuối có trùng nhau k?
     {
         if (start.x == finish.x || start.y == finish.y) {
