@@ -341,6 +341,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     text = new Text();
                     text.setStart(e.getPoint());
                     text.setIsCreated(false);
+                    return;
                 } else {
                     text.setIsCreated(true);
                     if (text.checkOverLap() == false) {
@@ -350,8 +351,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                         }
                     }
                     text.removeArea(this);
+                    return;
                 }
-                break;
             case "SELECT":
                 if (select != null) {
                     if (select.isIsCreating()) {
@@ -441,7 +442,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                         text = null;
                     }
                 }
-                break;
+                return;
              case "SELECT" :
                 if (select != null) {
                     if (select.isIsDragging()) {
@@ -546,7 +547,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     text.setFinish(endPoint);
                 }
 
-                break;
+                return;
         }
         repaint();
     }
