@@ -233,6 +233,16 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             repaint();
             text = null;
         }
+         else if (startSelect == true) {
+            if (select.isIsCreating()){
+            select.setIsSelected(true);
+            select.draw(g2d);
+            select = null;
+            startSelect = false;
+            startPoint = null;
+            endPoint = null;
+            }
+         }
     }
 
     @Override
@@ -357,22 +367,23 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     if (select.isIsCreating()) {
                         if (!testSel(startPoint)) { // Neu click chuot khong trong khoang Select thi coi nhu hoan thanh
                             select.setIsSelected(true);
-                            startPoint = null;
-                            endPoint = null;
                             select.draw(g2d);
                             repaint();
                             select = null;
                             startSelect = false;
+                            startPoint = null;
+                            endPoint = null;
                         }
                         else {
                             tempx = select.getStartPoint().x - startPoint.x;
                             tempy = select.getStartPoint().y - startPoint.y;
                             select.addArrPoint(new Point(startPoint.x - tempx, startPoint.y - tempy));
+                            return;
                         }
                     }
                 }
                 
-                if (select == null) {
+                else if (select == null) {
                     select = new Selection();
                     startSelect = true; //Da duoc khoi tao
                     startPoint = e.getPoint();
@@ -447,7 +458,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     if (select.isIsDragging()) {
                         select.setEndOrigin(endPoint);
                         select.setIsCreating(true); //Danh dau anh da duoc khoi tao
-                        select.setIMG(buff_img.getSubimage(select.getStartOrigin().x, select.getStartOrigin().y , 
+                        select.setIMG(buff_img.getSubimage(Math.min(select.getStartOrigin().x, select.getEndOrigin().x),
+                                Math.min(select.getStartOrigin().y , select.getEndOrigin().y), 
                                 Math.abs(select.getStartOrigin().x - select.getEndOrigin().x), 
                                 Math.abs(select.getStartOrigin().y - select.getEndOrigin().y)));
                         select.setIsDragging(false); //Drag xong
