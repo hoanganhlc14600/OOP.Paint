@@ -19,7 +19,9 @@ public class Polygon extends Shape implements DrawType {
     public ArrayList<Line> getListLine() { 
         return listLine;
     }
-    
+    public Polygon(){
+        this.startPoint = null;
+    }
     public void addLine(Line line) //thêm đường thẳng vào danh sách
     {
         listLine.add(line);

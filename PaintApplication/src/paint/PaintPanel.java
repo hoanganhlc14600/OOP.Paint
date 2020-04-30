@@ -268,6 +268,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             case "CURVE":
                 if(curve == null){
                     curve = new Curve();
+                    curve.setStartPoint(null);
+                    curve.setEndPoint(null);
                 }
                 if(curve.getStartPoint() == null){
                     curve.setStrokeColor(Color.black);

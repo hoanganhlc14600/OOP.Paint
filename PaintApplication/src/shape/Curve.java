@@ -66,7 +66,7 @@ public class Curve extends Shape implements DrawType{
             curveLine.get(0).setLocation(curveLine.get(1));
         }
         GeneralPath path = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
-        path.moveTo(this.getStartPoint().x, this.startPoint.y); //co dinh diem start   
+        path.moveTo(this.getStartPoint().x, this.getStartPoint().y); //co dinh diem start   
         path.curveTo(curveLine.get(0).x, curveLine.get(0).y, curveLine.get(1).x, curveLine.get(1).y, this.getEndPoint().x, this.getEndPoint().y); // point 2 + point 3
         g2d.draw(path);
     }
