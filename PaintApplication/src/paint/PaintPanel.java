@@ -181,15 +181,14 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     
     private boolean testSel(Point test) {
         if (select != null && select.getStartPoint() != null && select.getEndPoint() != null) {
-            if (test.x < Math.min(select.getStartPoint().x, select.getEndPoint().x) || 
-                    test.x > Math.max(select.getStartPoint().x, select.getEndPoint().x)) 
-                return false;
-            else if (test.y < Math.min(select.getStartPoint().y, select.getEndPoint().y) || 
-                    test.y > Math.max(select.getStartPoint().y, select.getEndPoint().y)) 
-                return false;
-            return true;
+            if (test.x >= Math.min(select.getStartPoint().x, select.getEndPoint().x) && 
+                    test.x <= Math.max(select.getStartPoint().x, select.getEndPoint().x) 
+             && test.y >= Math.min(select.getStartPoint().y, select.getEndPoint().y) && 
+                    test.y <= Math.max(select.getStartPoint().y, select.getEndPoint().y)) 
+            {return true;}
+            else return false;
         }
-        else return false;
+        else {return false;}
     }
     /**
      * This method is called from within the constructor to initialize the form.
