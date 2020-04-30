@@ -34,6 +34,7 @@ import java.lang.Math;
 import property.Stroke;
 import property.TextPanel;
 import shape.Text;
+import shape.Selection;
 
 public class PaintPanel extends javax.swing.JPanel implements MouseListener, MouseMotionListener {
 
@@ -59,11 +60,14 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     private String mode;
     private Stroke stroke;
     private Text text;
+    private Selection select;
     private int x = 0;
     private double r = 15.0;
     private boolean dragged;
     private TextPanel textPanel = new TextPanel();
-
+    private int tempx, tempy;
+    private boolean startSelect = false;
+    
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
     }
@@ -145,6 +149,9 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     text.draw2(g2, g2d);
                 }
                 break;
+            case "SELECT":
+                select.draw(g2);
+                break;
         }
     }
 
@@ -172,7 +179,19 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     public void setMode(String mode) {
         this.mode = mode;
     }
-
+    
+    private boolean testSel(Point test) {
+        if (select != null && select.getStartPoint() != null && select.getEndPoint() != null) {
+            if (test.x < Math.min(select.getStartPoint().x, select.getEndPoint().x) || 
+                    test.x > Math.max(select.getStartPoint().x, select.getEndPoint().x)) 
+                return false;
+            else if (test.y < Math.min(select.getStartPoint().y, select.getEndPoint().y) || 
+                    test.y > Math.max(select.getStartPoint().y, select.getEndPoint().y)) 
+                return false;
+            return true;
+        }
+        else return false;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -333,6 +352,34 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     text.removeArea(this);
                 }
                 break;
+            case "SELECT":
+                if (select != null) {
+                    if (select.isIsCreating()) {
+                        if (!testSel(startPoint)) { // Neu click chuot khong trong khoang Select thi coi nhu hoan thanh
+                            select.setIsSelected(true);
+                            startPoint = null;
+                            endPoint = null;
+                            select.draw(g2d);
+                            repaint();
+                            select = null;
+                            startSelect = false;
+                        }
+                        else {
+                            tempx = select.getStartPoint().x - startPoint.x;
+                            tempy = select.getStartPoint().y - startPoint.y;
+                            select.addArrPoint(new Point(startPoint.x - tempx, startPoint.y - tempy));
+                        }
+                    }
+                }
+                
+                if (select == null) {
+                    select = new Selection();
+                    startSelect = true; //Da duoc khoi tao
+                    startPoint = e.getPoint();
+                    select.setStartOrigin(startPoint);
+                    select.setStartPoint(startPoint);
+                }
+                break;
         }
         repaint();
     }
@@ -395,6 +442,18 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     }
                 }
                 break;
+             case "SELECT" :
+                if (select != null) {
+                    if (select.isIsDragging()) {
+                        select.setEndOrigin(endPoint);
+                        select.setIsCreating(true); //Danh dau anh da duoc khoi tao
+                        select.setIMG(buff_img.getSubimage(select.getStartOrigin().x, select.getStartOrigin().y , 
+                                Math.abs(select.getStartOrigin().x - select.getEndOrigin().x), 
+                                Math.abs(select.getStartOrigin().y - select.getEndOrigin().y)));
+                        select.setIsDragging(false); //Drag xong
+                    }
+                }
+                break;
         }
 
         startPoint = null;
@@ -421,6 +480,19 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         endPoint = e.getPoint();
         switch (mode) {
             case "SELECT":
+                if (select != null) {
+                    if (select.isIsCreating()){
+                    select.setStartPoint(new Point( endPoint.x + tempx , endPoint.y + tempy));
+                    select.addArrPoint(new Point(endPoint.x + tempx, endPoint.y + tempy));
+                    }
+                    else {
+                        //Neu anh chua tao thi tao diem bat dau va ket thuc roi danh dau la dang keo -> released
+                        select.setPoint(new Point (Math.min(startPoint.x, endPoint.x), Math.min(startPoint.y, endPoint.y)),
+                                new Point(Math.max(startPoint.x, endPoint.x), Math.max(startPoint.y, endPoint.y)));
+                        select.setIsDragging(true);
+                    }
+                }
+ 
                 break;
             case "PENCIL":
                 pencil.setPoint(startPoint, endPoint);
