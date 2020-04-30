@@ -104,6 +104,7 @@ public class Selection extends Shape implements DrawType {
             g2d.drawImage(img, startPoint.x, startPoint.y, null); //Vẽ ảnh lên
         }
         
+        if (startPoint != null && endPoint != null) {
         if (!isCreating) {
             //Nếu chưa tạo vùng chọn thì tạo vùng chọn
             g2d.drawRect(Math.min(startPoint.x, endPoint.x), Math.min(startPoint.y, endPoint.y), 
@@ -113,14 +114,16 @@ public class Selection extends Shape implements DrawType {
             //Nếu đã tạo vùng thì vẽ khung chọn vùng để kéo đi
             g2d.drawRect(startPoint.x, startPoint.y, w, h);
         }
+        }
     }
     //Tạo ảnh ảo
     public void setIMG (BufferedImage IMG){
-        w = IMG.getWidth();
-        h = IMG.getHeight();
+        BufferedImage img = new BufferedImage(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB);
+        w = img.getWidth();
+        h = img.getHeight();
         data = new int[w*h*3];
         //Tạo bản ảnh mới có kích thước bằng ảnh ban đầu
-        BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+        
         Graphics2D g2d = (Graphics2D) img.getGraphics(); //Dán ảnh trống có kích thước tương tự ảnh đầu lên g2d
         g2d.drawImage(IMG, 0, 0, null); //Vẽ ảnh ban đầu lên ảnh mới vừa tạo
         g2d.dispose();

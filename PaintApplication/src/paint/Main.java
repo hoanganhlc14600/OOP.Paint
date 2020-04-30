@@ -720,6 +720,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private void bSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSelectActionPerformed
         // TODO add your handling code here:
         paintPanel.setMode("SELECT");
+        paintPanel.ChangeTool();
     }//GEN-LAST:event_bSelectActionPerformed
 
     private void bCopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCopyActionPerformed
