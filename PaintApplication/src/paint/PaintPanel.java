@@ -536,7 +536,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             case "COLORPICKER":
                 break;
             case "ERASER":
-                eraser.setPoint(endPoint, endPoint);
+                eraser.setPoint(startPoint, endPoint);
+                startPoint = endPoint;
                 eraser.draw(g2d);
                 break;
             case "BUCKET":
