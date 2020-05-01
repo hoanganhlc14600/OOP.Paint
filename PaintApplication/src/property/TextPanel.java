@@ -156,6 +156,7 @@ public class TextPanel extends javax.swing.JPanel {
 
         buttonGroup1.add(jToggleButton1);
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/opaque.png"))); // NOI18N
+        jToggleButton1.setSelected(true);
         jToggleButton1.setText("Opaque");
         jToggleButton1.setAlignmentY(0.0F);
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
