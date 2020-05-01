@@ -181,12 +181,14 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     
     private boolean testSel(Point test) {
         if (select != null && select.getStartPoint() != null && select.getEndPoint() != null) {
-            if (test.x >= Math.min(select.getStartPoint().x, select.getEndPoint().x) && 
-                    test.x <= Math.max(select.getStartPoint().x, select.getEndPoint().x) 
-             && test.y >= Math.min(select.getStartPoint().y, select.getEndPoint().y) && 
-                    test.y <= Math.max(select.getStartPoint().y, select.getEndPoint().y)) 
-            {return true;}
-            else return false;
+            if (test.x < Math.min(select.getStartPoint().x, select.getEndPoint().x) || 
+                    test.x > Math.max(select.getStartPoint().x, select.getEndPoint().x) )
+                return false;
+            else if(test.y < Math.min(select.getStartPoint().y, select.getEndPoint().y) || 
+                    test.y > Math.max(select.getStartPoint().y, select.getEndPoint().y)) 
+            {return false;}
+            
+            return true;
         }
         else {return false;}
     }
@@ -258,6 +260,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     @Override
     public void mousePressed(MouseEvent e) {//goi khi giu chuot
         startPoint = e.getPoint();
+        
         switch (mode) {
             case "PENCIL":
                 pencil.setPoint(startPoint, startPoint);
@@ -368,10 +371,10 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                             select.setIsSelected(true);
                             select.draw(g2d);
                             repaint();
-                            select = null;
-                            startSelect = false;
                             startPoint = null;
                             endPoint = null;
+                            select = null;
+                            startSelect = false;
                         }
                         else {
                             tempx = select.getStartPoint().x - startPoint.x;
@@ -382,7 +385,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     }
                 }
                 
-                else if (select == null) {
+                if (select == null) {
                     select = new Selection();
                     startSelect = true; //Da duoc khoi tao
                     startPoint = e.getPoint();
@@ -454,6 +457,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 return;
              case "SELECT" :
                 if (select != null) {
+                    if (!select.isIsCreating()){
                     if (select.isIsDragging()) {
                         select.setEndOrigin(endPoint);
                         select.setIsCreating(true); //Danh dau anh da duoc khoi tao
@@ -462,6 +466,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                                 Math.abs(select.getStartOrigin().x - select.getEndOrigin().x), 
                                 Math.abs(select.getStartOrigin().y - select.getEndOrigin().y)));
                         select.setIsDragging(false); //Drag xong
+                    }
                     }
                 }
                 break;
