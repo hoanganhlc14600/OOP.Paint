@@ -391,6 +391,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     startPoint = e.getPoint();
                     select.setStartOrigin(startPoint);
                     select.setStartPoint(startPoint);
+                    select.setEndPoint(startPoint);
                 }
                 break;
         }
