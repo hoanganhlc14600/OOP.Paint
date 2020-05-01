@@ -356,7 +356,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             case "TEXT":
                 if (text == null) {
                     text = new Text();
-                    text.setStart(e.getPoint());
+                    text.setStart(startPoint);
+                    text.setFinish(startPoint);
                     text.setIsCreated(false);
                     return;
                 } else {
