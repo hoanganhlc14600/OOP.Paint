@@ -39,7 +39,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     public Main() {
         initComponents();
         
-        paintPanel = new PaintPanel(800, 500);
+        paintPanel = new PaintPanel();
         backgroundPanel.setLayout(null);
         backgroundPanel.setBackground(new Color(219, 228, 241));
         backgroundPanel.setPreferredSize(new Dimension(paintPanel.getWidth()+5,paintPanel.getHeight()+5));

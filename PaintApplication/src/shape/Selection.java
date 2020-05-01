@@ -25,6 +25,10 @@ public class Selection extends Shape implements DrawType {
     private int w;
     private int h;
 
+    public Selection(){
+        this.startPoint = null;
+        this.endPoint = null;
+    }
     public boolean isIsCreating() {
         return isCreating;
     }
@@ -47,10 +51,6 @@ public class Selection extends Shape implements DrawType {
 
     public void setIsDragging(boolean isDragging) {
         this.isDragging = isDragging;
-    }
-
-    public void setStartPoint(Point startPoint) {
-        this.startPoint = startPoint;
     }
 
     public Point getEndPoint() {

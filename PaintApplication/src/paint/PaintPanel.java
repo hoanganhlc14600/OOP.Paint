@@ -67,7 +67,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     private TextPanel textPanel = new TextPanel();
     private int tempx, tempy;
     private boolean startSelect = false;
-    
+    private int width = 800;
+    private int height = 500;
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
     }
@@ -85,7 +86,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         }
     }
 
-    public PaintPanel(int width, int height) {
+    public PaintPanel() {
         initComponents();
 
         mode = new String("PENCIL");
@@ -149,7 +150,14 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 }
                 break;
             case "SELECT":
+<<<<<<< HEAD
+                if(select != null)
+                    select.draw(g2);
+=======
+                if (select != null) {
                 select.draw(g2);
+                }
+>>>>>>> 3e6aae58d39e7e9a1f9403e9fe3d553fb9e620c6
                 break;
         }
     }
@@ -384,13 +392,13 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                         }
                     }
                 }
-                
-                if (select == null) {
+                else if (select == null) {
                     select = new Selection();
                     startSelect = true; //Da duoc khoi tao
                     startPoint = e.getPoint();
                     select.setStartOrigin(startPoint);
                     select.setStartPoint(startPoint);
+                    select.setEndPoint(startPoint);
                 }
                 break;
         }
@@ -458,20 +466,19 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
              case "SELECT" :
                 if (select != null) {
                     if (!select.isIsCreating()){
-                    if (select.isIsDragging()) {
-                        select.setEndOrigin(endPoint);
-                        select.setIsCreating(true); //Danh dau anh da duoc khoi tao
-                        select.setIMG(buff_img.getSubimage(Math.min(select.getStartOrigin().x, select.getEndOrigin().x),
-                                Math.min(select.getStartOrigin().y , select.getEndOrigin().y), 
-                                Math.abs(select.getStartOrigin().x - select.getEndOrigin().x), 
-                                Math.abs(select.getStartOrigin().y - select.getEndOrigin().y)));
-                        select.setIsDragging(false); //Drag xong
+                        if (select.isIsDragging()) {
+                            select.setEndOrigin(endPoint);
+                            select.setIsCreating(true); //Danh dau anh da duoc khoi tao
+                            select.setIMG(buff_img.getSubimage(Math.min(select.getStartOrigin().x, select.getEndOrigin().x),
+                                    Math.min(select.getStartOrigin().y , select.getEndOrigin().y), 
+                                    Math.abs(select.getStartOrigin().x - select.getEndOrigin().x), 
+                                    Math.abs(select.getStartOrigin().y - select.getEndOrigin().y)));
+                            select.setIsDragging(false); //Drag xong
                     }
                     }
                 }
-                break;
+                return;
         }
-
         startPoint = null;
         endPoint = null;
         repaint();
@@ -502,9 +509,18 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     select.addArrPoint(new Point(endPoint.x + tempx, endPoint.y + tempy));
                     }
                     else {
+                        Point startSEL = new Point (Math.min(startPoint.x, endPoint.x), Math.min(startPoint.y, endPoint.y));//trai tren
+                        Point endSEL = new Point(Math.max(startPoint.x, endPoint.x), Math.max(startPoint.y, endPoint.y));//phai duoi
+                        if(startSEL.x < 0)
+                            startSEL.x = 0;
+                        if(startSEL.y < 0)
+                            startSEL.y = 0;
+                        if(endSEL.x >= width)
+                            endSEL.x = width - 1;
+                        if(endSEL.y >= height)
+                            endSEL.y = height - 1;
                         //Neu anh chua tao thi tao diem bat dau va ket thuc roi danh dau la dang keo -> released
-                        select.setPoint(new Point (Math.min(startPoint.x, endPoint.x), Math.min(startPoint.y, endPoint.y)),
-                                new Point(Math.max(startPoint.x, endPoint.x), Math.max(startPoint.y, endPoint.y)));
+                        select.setPoint(startSEL, endSEL);
                         select.setIsDragging(true);
                     }
                 }
