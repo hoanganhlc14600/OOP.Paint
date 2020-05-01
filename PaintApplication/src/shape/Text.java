@@ -190,7 +190,7 @@ public class Text extends Shape {
                 g2.fillRect(a[0], a[1], (a[2] - a[0]), a[3] - a[1]);
                 g2.setColor(textColor);
                 for (String s : string.split("\n")) {
-                    g2.drawString(s, start.x, start.y += g2d.getFontMetrics().getHeight()); // FontMetricc lấy số liệu của Font chữ
+                    g2.drawString(s, a[0], a[1] += g2d.getFontMetrics().getHeight()); // FontMetricc lấy số liệu của Font chữ
                 }
             } else {
                 g2.setFont(font);
