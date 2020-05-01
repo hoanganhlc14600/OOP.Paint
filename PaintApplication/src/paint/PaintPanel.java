@@ -150,14 +150,9 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 }
                 break;
             case "SELECT":
-<<<<<<< HEAD
-                if(select != null)
-                    select.draw(g2);
-=======
                 if (select != null) {
                 select.draw(g2);
                 }
->>>>>>> 3e6aae58d39e7e9a1f9403e9fe3d553fb9e620c6
                 break;
         }
     }
