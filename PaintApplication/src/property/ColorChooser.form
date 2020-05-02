@@ -10,6 +10,9 @@
       <Color blue="f5" green="f5" red="f5" type="rgb"/>
     </Property>
   </Properties>
+  <Events>
+    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="formMousePressed"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -28,12 +31,12 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="jLabel1" alignment="0" pref="53" max="32767" attributes="0"/>
-                  <Component id="jToggleButton1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="bColor1" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="jToggleButton2" max="32767" attributes="0"/>
+                  <Component id="bColor2" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -113,8 +116,8 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jToggleButton1" pref="53" max="32767" attributes="0"/>
-                      <Component id="jToggleButton2" max="32767" attributes="0"/>
+                      <Component id="bColor1" pref="53" max="32767" attributes="0"/>
+                      <Component id="bColor2" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -146,11 +149,7 @@
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Group type="102" alignment="3" attributes="0">
-                          <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                          <Component id="jLabel1" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton22" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jButton23" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jButton24" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
@@ -160,9 +159,12 @@
                       <Component id="jButton28" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jButton29" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jButton30" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                          <Component id="jLabel2" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Component id="jButton31" min="-2" pref="23" max="-2" attributes="0"/>
@@ -172,14 +174,14 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+    <Component class="javax.swing.JToggleButton" name="bColor1">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+    <Component class="javax.swing.JToggleButton" name="bColor2">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
@@ -232,6 +234,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
@@ -255,6 +260,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
@@ -278,6 +286,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton4MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
@@ -301,6 +312,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton5MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
@@ -324,6 +338,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton6MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton7">
       <Properties>
@@ -347,6 +364,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton7MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton8">
       <Properties>
@@ -370,6 +390,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton8MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton9">
       <Properties>
@@ -393,6 +416,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton9MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton10">
       <Properties>
@@ -416,6 +442,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton10MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton11">
       <Properties>
@@ -439,6 +468,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton11MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton12">
       <Properties>
@@ -485,6 +517,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton13MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton14">
       <Properties>
@@ -508,6 +543,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton14MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton15">
       <Properties>
@@ -531,6 +569,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton15MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton16">
       <Properties>
@@ -554,6 +595,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton16MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton17">
       <Properties>
@@ -577,6 +621,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton17MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton18">
       <Properties>
@@ -600,6 +647,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton18MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton19">
       <Properties>
@@ -623,6 +673,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton19MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton20">
       <Properties>
@@ -646,6 +699,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton20MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton21">
       <Properties>
@@ -669,6 +725,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton21MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton22">
       <Properties>
@@ -692,6 +751,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton22MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton23">
       <Properties>
@@ -715,6 +777,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton23MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton24">
       <Properties>
@@ -738,6 +803,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton24MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton25">
       <Properties>
@@ -761,6 +829,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton25MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton26">
       <Properties>
@@ -784,6 +855,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton26MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton27">
       <Properties>
@@ -807,6 +881,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton27MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton28">
       <Properties>
@@ -830,6 +907,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton28MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton29">
       <Properties>
@@ -853,6 +933,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton29MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton30">
       <Properties>
@@ -876,6 +959,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton30MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton31">
       <Properties>
@@ -899,6 +985,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton31MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
@@ -907,6 +996,9 @@
         </Property>
         <Property name="alignmentY" type="float" value="0.0"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
