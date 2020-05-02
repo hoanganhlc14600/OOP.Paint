@@ -31,8 +31,6 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     /**
      * Creates new form Main
      */
-    
-    private ButtonGroup buttonGroup;
     private PaintPanel paintPanel;
     private JPanel backgroundPanel = new JPanel();
     private BufferedImage buff_img;
@@ -48,13 +46,14 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         paintPanel.setCoordinate(jCoordinate);
         paintPanel.setStroke(stroke1);
         paintPanel.setTextPanel(textPanel1);
-        paintPanel.addPropertyChangeListener(new PropertyChangeListener(){
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                paintPanel.ChangeTool();
-            }
-            
-        });
+        paintPanel.setColorChooser(colorChooser1);
+//        paintPanel.addPropertyChangeListener(new PropertyChangeListener(){
+//            @Override
+//            public void propertyChange(PropertyChangeEvent evt) {
+//                paintPanel.ChangeTool();
+//            }
+//            
+//        });
     }
     
     

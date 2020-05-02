@@ -107,6 +107,8 @@ public class ColorChooser extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(bColor1);
+        bColor1.setSelected(true);
+        bColor1.setBorder(null);
 
         buttonGroup1.add(bColor2);
 
@@ -202,6 +204,11 @@ public class ColorChooser extends javax.swing.JPanel {
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[255,255,255].png"))); // NOI18N
         jButton12.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[195,195,195].png"))); // NOI18N
         jButton13.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
@@ -617,6 +624,11 @@ public class ColorChooser extends javax.swing.JPanel {
     private void jButton31MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton31MousePressed
         colorButton(new Color(25,25,25));
     }//GEN-LAST:event_jButton31MousePressed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        colorButton(new Color(255,255,255));
+    }//GEN-LAST:event_jButton12ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

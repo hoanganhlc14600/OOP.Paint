@@ -31,6 +31,7 @@ import shape.RoundRect;
 import shape.Triangle;
 import shape.Curve;
 import java.lang.Math;
+import property.ColorChooser;
 import property.Stroke;
 import property.TextPanel;
 import shape.Text;
@@ -59,6 +60,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     private Curve curve;
     private String mode;
     private Stroke stroke;
+    private ColorChooser colorChooser;
     private Text text;
     private Selection select;
     private int x = 0;
@@ -73,7 +75,9 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
     }
-
+    public void setColorChooser(ColorChooser colorChooser) {
+        this.colorChooser = colorChooser;
+    }
     public void setTextPanel(TextPanel textPanel) {
         this.textPanel = textPanel;
     }
@@ -270,52 +274,57 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         switch (mode) {
             case "PENCIL":
                 pencil.setPoint(startPoint, startPoint);
-                pencil.setStrokeColor(Color.BLACK);
                 pencil.setStroke(stroke.getStroke());
+                pencil.setStrokeColor(colorChooser.getStrokeColor());
                 pencil.draw(g2d);
                 break;
             case "ERASER":
                 eraser.setPoint(startPoint, startPoint);
-                eraser.setStrokeColor(Color.WHITE);
+                eraser.setStrokeColor(colorChooser.getStrokeColor());
                 eraser.setSize(10);
                 eraser.setStroke(stroke.getStroke());
                 eraser.draw(g2d);
                 break;
             case "LINE":
                 line.setPoint(startPoint, startPoint);
-                line.setStrokeColor(Color.yellow);
+                line.setStrokeColor(colorChooser.getStrokeColor());
                 line.setStroke(stroke.getStroke());
                 break;
             case "OVAL":
                 oval.setPoint(startPoint, startPoint);
-                oval.setFillColor(Color.yellow);
+                oval.setFillColor(colorChooser.getFillColor());
+                oval.setStrokeColor(colorChooser.getStrokeColor());
                 oval.setStroke(stroke.getStroke());
                 break;
             case "RECTANGLE":
                 rect.setPoint(startPoint, startPoint);
-                rect.setStrokeColor(Color.black);
+                rect.setStrokeColor(colorChooser.getStrokeColor());
+                rect.setFillColor(colorChooser.getFillColor());
                 rect.setStroke(stroke.getStroke());
                 break;
             case "ROUNDRECTANGLE":
                 roundRect.setPoint(startPoint, startPoint);
-                roundRect.setStrokeColor(Color.yellow);
+                roundRect.setStrokeColor(colorChooser.getStrokeColor());
+                roundRect.setFillColor(colorChooser.getFillColor());
                 roundRect.setStroke(stroke.getStroke());
                 break;
             case "TRIANGLE":
                 triangle.setPoint(startPoint, startPoint);
-                triangle.setStrokeColor(Color.yellow);
+                triangle.setStrokeColor(colorChooser.getStrokeColor());
+                triangle.setFillColor(colorChooser.getFillColor());
                 triangle.setStroke(stroke.getStroke());
                 break;
             case "RIGHTTRIANGLE":
                 triangle.setPoint(startPoint, startPoint);
-                rightTriangle.setStrokeColor(Color.yellow);
+                rightTriangle.setStrokeColor(colorChooser.getStrokeColor());
+                rightTriangle.setFillColor(colorChooser.getFillColor());
                 rightTriangle.setStroke(stroke.getStroke());
                 break;
             case "POLYGON":
                 if (polygon.getStartPoint() == null) {//chua su dung polygon
                     polygon.setStartPoint(startPoint);
                 }
-                line.setStrokeColor(Color.black);
+                line.setStrokeColor(colorChooser.getStrokeColor()); 
                 line.setStroke(stroke.getStroke());
                 if (endPoint != null) {
                     //da ve 1 hoac nhieu duong thang roi => ta se ve duong thang tu diem cuoi duong thang truoc toi diem vua nhan
@@ -329,14 +338,14 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 break;
             case "BUCKET":
                 bucket.addArrPoint(startPoint);
-                bucket.setColor(Color.BLACK);
+                bucket.setColor(colorChooser.getStrokeColor());
                 bucket.setPoint(startPoint, startPoint);
                 bucket.draw(buff_img);
                 break;
             case "CURVE":
                 if (curve == null) {
                     curve = new Curve();
-                    curve.setStrokeColor(Color.black);
+                    curve.setStrokeColor(colorChooser.getStrokeColor());
                     curve.setStartPoint(startPoint);
                     curve.setStroke(stroke.getStroke());
                 }
@@ -449,7 +458,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             case "TEXT":
                 if (text != null) {
                     text.setFont(textPanel.getFont());
-                    text.setTextColor(Color.yellow);
+                    text.setTextColor(colorChooser.getStrokeColor());
+                    text.setFillColor(colorChooser.getFillColor());
                     text.setIsOpaque(textPanel.getIsOpaque());
                     text.setArea(this);
                     text.setFontArea();
