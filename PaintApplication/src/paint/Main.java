@@ -47,6 +47,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         paintPanel.setStroke(stroke1);
         paintPanel.setTextPanel(textPanel1);
         paintPanel.setColorChooser(colorChooser1);
+        paintPanel.setIsFill(isFill);
 //        paintPanel.addPropertyChangeListener(new PropertyChangeListener(){
 //            @Override
 //            public void propertyChange(PropertyChangeEvent evt) {
@@ -103,6 +104,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         stroke1 = new property.Stroke();
         jSeparator3 = new javax.swing.JSeparator();
         colorChooser1 = new property.ColorChooser();
+        isFill = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jPanelText = new javax.swing.JPanel();
         textPanel1 = new property.TextPanel();
@@ -350,6 +352,11 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setPreferredSize(new java.awt.Dimension(1, 0));
 
+        isFill.setBackground(new java.awt.Color(245, 245, 245));
+        isFill.setForeground(new java.awt.Color(153, 153, 153));
+        isFill.setSelected(true);
+        isFill.setText("Fill");
+
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -435,9 +442,13 @@ public class Main extends javax.swing.JFrame implements ActionListener{
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelOptionLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(isFill)
+                        .addGap(132, 132, 132)
+                        .addComponent(jLabel8))
                     .addComponent(colorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelOptionLayout.setVerticalGroup(
             jPanelOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -517,9 +528,11 @@ public class Main extends javax.swing.JFrame implements ActionListener{
                             .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanelOptionLayout.createSequentialGroup()
                                 .addComponent(colorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanelOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(isFill)
+                                    .addComponent(jLabel8))
+                                .addGap(4, 4, 4)))))
                 .addGap(36, 36, 36))
         );
 
@@ -631,12 +644,12 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1285, Short.MAX_VALUE)
             .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jCoordinate, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -890,6 +903,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbRotate;
     private property.ColorChooser colorChooser1;
+    private javax.swing.JRadioButton isFill;
     private javax.swing.JLabel jCoordinate;
     private javax.swing.JMenuItem jExit;
     private javax.swing.JLabel jLabel1;

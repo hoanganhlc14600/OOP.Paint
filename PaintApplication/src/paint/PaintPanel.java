@@ -31,6 +31,7 @@ import shape.RoundRect;
 import shape.Triangle;
 import shape.Curve;
 import java.lang.Math;
+import javax.swing.JRadioButton;
 import property.ColorChooser;
 import property.Stroke;
 import property.TextPanel;
@@ -71,12 +72,16 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     private boolean startSelect = false;
     private int width = 800;
     private int height = 500;
+    private JRadioButton isFill;
 
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
     }
     public void setColorChooser(ColorChooser colorChooser) {
         this.colorChooser = colorChooser;
+    }
+    public void setIsFill(JRadioButton isFill) {
+        this.isFill = isFill;
     }
     public void setTextPanel(TextPanel textPanel) {
         this.textPanel = textPanel;
@@ -292,30 +297,35 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 break;
             case "OVAL":
                 oval.setPoint(startPoint, startPoint);
+                oval.setDoFill(isFill.isSelected());
                 oval.setFillColor(colorChooser.getFillColor());
                 oval.setStrokeColor(colorChooser.getStrokeColor());
                 oval.setStroke(stroke.getStroke());
                 break;
             case "RECTANGLE":
                 rect.setPoint(startPoint, startPoint);
+                rect.setDoFill(isFill.isSelected());
                 rect.setStrokeColor(colorChooser.getStrokeColor());
                 rect.setFillColor(colorChooser.getFillColor());
                 rect.setStroke(stroke.getStroke());
                 break;
             case "ROUNDRECTANGLE":
                 roundRect.setPoint(startPoint, startPoint);
+                roundRect.setDoFill(isFill.isSelected());
                 roundRect.setStrokeColor(colorChooser.getStrokeColor());
                 roundRect.setFillColor(colorChooser.getFillColor());
                 roundRect.setStroke(stroke.getStroke());
                 break;
             case "TRIANGLE":
                 triangle.setPoint(startPoint, startPoint);
+                triangle.setDoFill(isFill.isSelected());
                 triangle.setStrokeColor(colorChooser.getStrokeColor());
                 triangle.setFillColor(colorChooser.getFillColor());
                 triangle.setStroke(stroke.getStroke());
                 break;
             case "RIGHTTRIANGLE":
-                triangle.setPoint(startPoint, startPoint);
+                rightTriangle.setPoint(startPoint, startPoint);
+                rightTriangle.setDoFill(isFill.isSelected());
                 rightTriangle.setStrokeColor(colorChooser.getStrokeColor());
                 rightTriangle.setFillColor(colorChooser.getFillColor());
                 rightTriangle.setStroke(stroke.getStroke());
