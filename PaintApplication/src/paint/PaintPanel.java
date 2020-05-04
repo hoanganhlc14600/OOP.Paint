@@ -35,6 +35,7 @@ import javax.swing.JRadioButton;
 import property.ColorChooser;
 import property.Stroke;
 import property.TextPanel;
+import property.Undo;
 import shape.Text;
 import shape.Selection;
 
@@ -43,8 +44,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     /**
      * Creates new form DrawPanel
      */
-    Graphics2D g2d, g2; // doi tuong do hoa
-    private BufferedImage buff_img; // anh de ve
+    Graphics2D g2d, g2, g2dd; // doi tuong do hoa
+    private BufferedImage buff_img,a; // anh de ve
     private boolean isSaved;
     private Point startPoint, endPoint;
     private JLabel jCoordinate;
@@ -62,6 +63,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     private String mode;
     private Stroke stroke;
     private ColorChooser colorChooser;
+    private Undo undo;
     private Text text;
     private Selection select;
     private int x = 0;
@@ -111,14 +113,19 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         eraser = new Eraser();
         bucket = new Bucket();
         buff_img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        undo = new Undo();
         this.setSize(width, height);
         this.setLocation(5, 5);
 
+        a = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        g2dd = (Graphics2D) a.createGraphics();
+        g2dd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2dd.setColor(new Color(255, 255, 255));
+        g2dd.fillRect(0, 0, width, height);
         g2d = (Graphics2D) buff_img.createGraphics();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(new Color(255, 255, 255));
         g2d.fillRect(0, 0, width, height);
-
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
@@ -208,6 +215,14 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         }
     }
 
+    public void Undo() {
+        if (!undo.isEmpty()) {
+            setImage(undo.pop());
+        }
+    }
+    public void a() {
+        undo.push(buff_img.getData(), buff_img.getColorModel());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

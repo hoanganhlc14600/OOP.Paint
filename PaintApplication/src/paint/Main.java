@@ -749,10 +749,12 @@ public class Main extends javax.swing.JFrame implements ActionListener{
 
     private void bUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUndoActionPerformed
         // TODO add your handling code here:
+        paintPanel.Undo();
     }//GEN-LAST:event_bUndoActionPerformed
 
     private void bRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRedoActionPerformed
         // TODO add your handling code here:
+        paintPanel.a();
     }//GEN-LAST:event_bRedoActionPerformed
 
     private void bPencilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPencilActionPerformed
