@@ -121,7 +121,7 @@ public class Selection extends Shape implements DrawType {
         BufferedImage img = new BufferedImage(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB);
         w = img.getWidth();
         h = img.getHeight();
-        data = new int[w*h*3];
+//        data = new int[w*h*3];
         //Tạo bản ảnh mới có kích thước bằng ảnh ban đầu
         
         Graphics2D g2d = (Graphics2D) img.getGraphics(); //Dán ảnh trống có kích thước tương tự ảnh đầu lên g2d

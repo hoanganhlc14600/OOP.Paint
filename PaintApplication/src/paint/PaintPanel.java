@@ -33,6 +33,7 @@ import shape.Curve;
 import java.lang.Math;
 import javax.swing.JRadioButton;
 import property.ColorChooser;
+import property.Redo;
 import property.Stroke;
 import property.TextPanel;
 import property.Undo;
@@ -64,6 +65,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     private Stroke stroke;
     private ColorChooser colorChooser;
     private Undo undo;
+    private Redo redo;
     private Text text;
     private Selection select;
     private int x = 0;
@@ -114,6 +116,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         bucket = new Bucket();
         buff_img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         undo = new Undo();
+        redo = new Redo();
         this.setSize(width, height);
         this.setLocation(5, 5);
 
@@ -179,10 +182,12 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     }
 
     public void setImage(BufferedImage img) {
+        width = img.getWidth();
+        height = img.getHeight();
         buff_img = img;
         g2d = (Graphics2D) buff_img.createGraphics();
         isSaved = true;
-        this.setSize(buff_img.getWidth(), buff_img.getHeight());
+        this.setSize(width, height);
         this.revalidate();
         this.repaint();
     }
@@ -217,11 +222,16 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
 
     public void Undo() {
         if (!undo.isEmpty()) {
+            redo.push(buff_img);
             setImage(undo.pop());
         }
     }
-    public void a() {
-        undo.push(buff_img.getData(), buff_img.getColorModel());
+    
+    public void Redo() {
+        if (!redo.isEmpty()) {
+            setImage(redo.pop());
+            undo.push(buff_img);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -513,6 +523,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 }
                 return;
         }
+        undo.push(buff_img);
         startPoint = null;
         endPoint = null;
         repaint();

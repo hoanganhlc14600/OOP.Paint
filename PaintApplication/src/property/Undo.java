@@ -6,42 +6,44 @@
 package property;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
-import java.util.Hashtable;
 
 /**
  *
  * @author Tuan Hien
  */
 public class Undo {
-    private Raster[] undo;
-    private BufferedImage tmp;
+    private int data[][];
     private final int size = 10;
     private int topUndo, countUndo;
-    private WritableRaster writableRaster;
-    private ColorModel colorModel;
+    private int[] w, h;
+    private BufferedImage img;
+    
     public Undo() {
-        undo = new Raster[size];
+        data = new int[size][];
+        w = new int[size];
+        h = new int[size];
         topUndo = -1;
         countUndo = 0;
     }
-    public void push(Raster img, ColorModel colorModel) {
-        topUndo = (topUndo + 1) % size;
-        if (undo[topUndo] == null) countUndo++;
-        undo[topUndo] = img;
-        colorModel = colorModel;
+    public void push(BufferedImage buff_img) {
+        if (countUndo < 10) ++countUndo;
+        topUndo = (topUndo + 1) % 10;
+        w[topUndo] = buff_img.getWidth();
+        h[topUndo] = buff_img.getHeight();
+        WritableRaster raster = buff_img.getRaster();
+        data[topUndo] = raster.getPixels(0, 0, w[topUndo], h[topUndo], data[topUndo]);
     }
     public BufferedImage pop() {
-        if (countUndo != 0) {
-            WritableRaster writableRaster = undo[topUndo].createCompatibleWritableRaster();
-            writableRaster.setDataElements(0, 0, undo[topUndo]);
-            tmp = new BufferedImage(colorModel, writableRaster, true, null);
-            undo[topUndo] = null;
-            topUndo = (topUndo - 1) % size;
+        if (countUndo > 0 && data[topUndo] != null) {
+            img = new BufferedImage(w[topUndo], h[topUndo] , BufferedImage.TYPE_INT_RGB);
+            img.getRaster().setPixels(0, 0, w[topUndo], h[topUndo], data[topUndo]);
             countUndo--;
-            return tmp;
+            w[topUndo] = 0;
+            h[topUndo] = 0;
+            data[topUndo] = null;
+            topUndo = (topUndo - 1) % 10;
+            return img;
         }
         return null;
     }
