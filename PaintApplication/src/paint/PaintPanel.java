@@ -494,7 +494,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     text.setIsOpaque(textPanel.getIsOpaque());
                     text.setArea(this);
                     text.setFontArea();
-                    text.getArea().setForeground(Color.red);
+                    text.getArea().setForeground(colorChooser.getStrokeColor());
                     text.getArea().setOpaque(textPanel.getIsOpaque());
                     repaint();
                     if (text.getIsCreated()) {
@@ -509,10 +509,17 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                         if (select.isIsDragging()) {
                             select.setEndOrigin(endPoint);
                             select.setIsCreating(true); //Danh dau anh da duoc khoi tao
-                            select.setIMG(buff_img.getSubimage(Math.min(select.getStartOrigin().x, select.getEndOrigin().x),
-                                    Math.min(select.getStartOrigin().y, select.getEndOrigin().y),
-                                    Math.abs(select.getStartOrigin().x - select.getEndOrigin().x),
-                                    Math.abs(select.getStartOrigin().y - select.getEndOrigin().y)));
+                            Point selP1 = new Point(Math.min(select.getStartOrigin().x, select.getEndOrigin().x) ,
+                            Math.min(select.getStartOrigin().y, select.getEndOrigin().y));
+                            
+                            Point selP2 = new Point(Math.max(select.getStartOrigin().x, select.getEndOrigin().x) ,
+                            Math.max(select.getStartOrigin().y, select.getEndOrigin().y));
+                            
+                            if (selP1.x < 0) selP1.x = 0;
+                            if (selP1.y < 0) selP1.y = 0;
+                            if (selP2.x > width) selP2.x = width;
+                            if (selP2.y > height) selP2.y = height;
+                            select.setIMG(buff_img.getSubimage(selP1.x, selP1.y , Math.abs(selP2.x - selP1.x), Math.abs(selP2.y - selP1.y)));
                             select.setIsDragging(false); //Drag xong
                         }
                     }
