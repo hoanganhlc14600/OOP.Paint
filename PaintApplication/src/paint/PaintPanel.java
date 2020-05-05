@@ -45,8 +45,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     /**
      * Creates new form DrawPanel
      */
-    Graphics2D g2d, g2, g2dd; // doi tuong do hoa
-    private BufferedImage buff_img,a; // anh de ve
+    Graphics2D g2d, g2; // doi tuong do hoa
+    private BufferedImage buff_img; // anh de ve
     private boolean isSaved;
     private Point startPoint, endPoint;
     private JLabel jCoordinate;
@@ -120,11 +120,6 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         this.setSize(width, height);
         this.setLocation(5, 5);
 
-        a = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        g2dd = (Graphics2D) a.createGraphics();
-        g2dd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2dd.setColor(new Color(255, 255, 255));
-        g2dd.fillRect(0, 0, width, height);
         g2d = (Graphics2D) buff_img.createGraphics();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(new Color(255, 255, 255));
@@ -137,7 +132,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.drawImage(buff_img, null, 0, 0);
-        switch (mode) {
+        if (startPoint != null && endPoint !=null) {
+            switch (mode) {
             case "LINE":
                 line.draw(g2);
                 break;
@@ -174,6 +170,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     select.draw(g2);
                 }
                 break;
+            }
         }
     }
 
@@ -186,7 +183,6 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         height = img.getHeight();
         buff_img = img;
         g2d = (Graphics2D) buff_img.createGraphics();
-        isSaved = true;
         this.setSize(width, height);
         this.revalidate();
         this.repaint();
@@ -300,7 +296,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     @Override
     public void mousePressed(MouseEvent e) {//goi khi giu chuot
         startPoint = e.getPoint();
-
+        undo.push(buff_img);
         switch (mode) {
             case "PENCIL":
                 pencil.setPoint(startPoint, startPoint);
@@ -526,7 +522,6 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         startPoint = null;
         endPoint = null;
         repaint();
-        undo.push(buff_img);
     }
 
     @Override
