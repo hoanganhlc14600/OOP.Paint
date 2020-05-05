@@ -523,10 +523,10 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 }
                 return;
         }
-        undo.push(buff_img);
         startPoint = null;
         endPoint = null;
         repaint();
+        undo.push(buff_img);
     }
 
     @Override

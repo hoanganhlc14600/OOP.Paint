@@ -14,7 +14,7 @@ import java.awt.image.WritableRaster;
  */
 public class Undo {
     private int data[][];
-    private final int size = 10;
+    private final int size = 100;
     private int topUndo, countUndo;
     private int[] w, h;
     private BufferedImage img;
@@ -27,8 +27,8 @@ public class Undo {
         countUndo = 0;
     }
     public void push(BufferedImage buff_img) {
-        if (countUndo < 10) ++countUndo;
-        topUndo = (topUndo + 1) % 10;
+        if (countUndo < 100) ++countUndo;
+        topUndo = (topUndo + 1) % 100;
         w[topUndo] = buff_img.getWidth();
         h[topUndo] = buff_img.getHeight();
         WritableRaster raster = buff_img.getRaster();
@@ -42,7 +42,7 @@ public class Undo {
             w[topUndo] = 0;
             h[topUndo] = 0;
             data[topUndo] = null;
-            topUndo = (topUndo - 1) % 10;
+            topUndo = (topUndo - 1) % 100;
             return img;
         }
         return null;

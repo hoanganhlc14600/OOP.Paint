@@ -14,7 +14,7 @@ import java.awt.image.WritableRaster;
  */
 public class Redo {
     private int data[][];
-    private final int size = 10;
+    private final int size = 100;
     private int topRedo, countRedo;
     private int[] w, h;
     private BufferedImage img;
@@ -27,8 +27,8 @@ public class Redo {
         countRedo = 0;
     }
     public void push(BufferedImage buff_img) {
-        if (countRedo < 10) ++countRedo;
-        topRedo = (topRedo + 1) % 10;
+        if (countRedo < 100) ++countRedo;
+        topRedo = (topRedo + 1) % 100;
         w[topRedo] = buff_img.getWidth();
         h[topRedo] = buff_img.getHeight();
         WritableRaster raster = buff_img.getRaster();
@@ -42,7 +42,7 @@ public class Redo {
             w[topRedo] = 0;
             h[topRedo] = 0;
             data[topRedo] = null;
-            topRedo = (topRedo - 1) % 10;
+            topRedo = (topRedo - 1) % 100;
             return img;
         }
         return null;
