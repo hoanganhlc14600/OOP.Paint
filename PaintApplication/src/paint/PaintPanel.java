@@ -498,7 +498,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     text.setIsOpaque(textPanel.getIsOpaque());
                     text.setArea(this);
                     text.setFontArea();
-                    text.getArea().setForeground(Color.red);
+                    text.getArea().setForeground(colorChooser.getStrokeColor());
                     text.getArea().setOpaque(textPanel.getIsOpaque());
                     repaint();
                     if (text.getIsCreated()) {
