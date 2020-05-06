@@ -306,7 +306,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 break;
             case "ERASER":
                 eraser.setPoint(startPoint, startPoint);
-                eraser.setStrokeColor(colorChooser.getStrokeColor());
+                eraser.setStrokeColor(colorChooser.getFillColor());
                 eraser.setSize(10);
                 eraser.setStroke(stroke.getStroke());
                 eraser.draw(g2d);
@@ -369,7 +369,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 break;
             case "BUCKET":
                 bucket.addArrPoint(startPoint);
-                bucket.setColor(colorChooser.getStrokeColor());
+                bucket.setColor(colorChooser.getFillColor());
                 bucket.setPoint(startPoint, startPoint);
                 bucket.draw(buff_img);
                 break;
