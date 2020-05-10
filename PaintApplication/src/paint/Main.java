@@ -764,7 +764,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNewActionPerformed
-        
+        // TODO add your handling code here:
         jFrame1.setVisible(true);
     }//GEN-LAST:event_jNewActionPerformed
 
