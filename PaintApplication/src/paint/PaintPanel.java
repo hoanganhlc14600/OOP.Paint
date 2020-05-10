@@ -300,6 +300,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     @Override
     public void mousePressed(MouseEvent e) {//goi khi giu chuot
         startPoint = e.getPoint();
+        redo.clear();
         undo.push(buff_img);
         switch (mode) {
             case "PENCIL":
