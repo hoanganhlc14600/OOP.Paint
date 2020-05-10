@@ -5,19 +5,21 @@
  */
 package paint;
 
-//import com.sun.glass.events.KeyEvent;
+import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -844,20 +846,6 @@ public class Main extends javax.swing.JFrame implements ActionListener{
 
     private void cbRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRotateActionPerformed
         // TODO add your handling code here:
-        if (cbRotate.getSelectedItem() == cbRotate.getItemAt(1)) {
-            paintPanel.rotate(90);
-            
-        } else if (cbRotate.getSelectedItem() == cbRotate.getItemAt(2)) {
-            paintPanel.rotate(-90);
-        } else if (cbRotate.getSelectedItem() == cbRotate.getItemAt(3)) {
-            paintPanel.flipping(1);
-            
-        } else if (cbRotate.getSelectedItem() == cbRotate.getItemAt(4)) {
-            paintPanel.flipping(2);
-        }
-        buff_img = paintPanel.getBuffer();
-        backgroundPanel.setPreferredSize(new Dimension(paintPanel.getWidth() + 30, paintPanel.getHeight() + 30));
-        cbRotate.setSelectedIndex(0);
     }//GEN-LAST:event_cbRotateActionPerformed
 
     private void bUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUndoActionPerformed
@@ -967,19 +955,19 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-      /*  // TODO add your handling code here:
+        // TODO add your handling code here:
         char c = evt.getKeyChar();
         if (!Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) {
             evt.consume();
-        }*/
+        }
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-      /*  // TODO add your handling code here:
+        // TODO add your handling code here:
         char c = evt.getKeyChar();
         if (!Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) {
             evt.consume();
-        }*/
+        }
     }//GEN-LAST:event_jTextField2KeyTyped
 
     @Override
