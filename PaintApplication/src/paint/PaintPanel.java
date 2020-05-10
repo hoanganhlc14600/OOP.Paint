@@ -445,6 +445,9 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     select.setEndPoint(startPoint);
                 }
                 break;
+            case "COLORPICKER":
+                colorChooser.colorButton(new Color(buff_img.getRGB(startPoint.x, startPoint.y)));
+                break;
         }
         repaint();
     }

@@ -19,6 +19,8 @@ public class ColorChooser extends javax.swing.JPanel {
     protected ImageIcon color2Icon;
     protected Color strokeColor;
     protected Color fillColor;
+    
+    
     /**
      * Creates new form ColorChooser
      */
@@ -32,7 +34,7 @@ public class ColorChooser extends javax.swing.JPanel {
         bColor2.setIcon(color2Icon);
     }
     
-    private void colorButton(Color color){
+    public void colorButton(Color color){
         if(bColor1.isSelected()){
             strokeColor = color;
             color1Icon = new ColorCell(color);
@@ -52,6 +54,7 @@ public class ColorChooser extends javax.swing.JPanel {
     public Color getFillColor() {
         return fillColor;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
