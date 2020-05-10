@@ -10,6 +10,7 @@ package paint;
  * @author All
  */
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -17,6 +18,8 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import javax.swing.JLabel;
 import shape.Bucket;
@@ -45,8 +48,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     /**
      * Creates new form DrawPanel
      */
-    Graphics2D g2d, g2; // doi tuong do hoa
-    private BufferedImage buff_img; // anh de ve
+    Graphics2D g2d, g2, g2dd; // doi tuong do hoa
+    private BufferedImage buff_img, a; // anh de ve
     private boolean isSaved;
     private Point startPoint, endPoint;
     private JLabel jCoordinate;
@@ -81,12 +84,15 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
     }
+
     public void setColorChooser(ColorChooser colorChooser) {
         this.colorChooser = colorChooser;
     }
+
     public void setIsFill(JRadioButton isFill) {
         this.isFill = isFill;
     }
+
     public void setTextPanel(TextPanel textPanel) {
         this.textPanel = textPanel;
     }
@@ -120,6 +126,11 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         this.setSize(width, height);
         this.setLocation(5, 5);
 
+        a = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        g2dd = (Graphics2D) a.createGraphics();
+        g2dd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2dd.setColor(new Color(255, 255, 255));
+        g2dd.fillRect(0, 0, width, height);
         g2d = (Graphics2D) buff_img.createGraphics();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(new Color(255, 255, 255));
@@ -132,8 +143,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.drawImage(buff_img, null, 0, 0);
-        if (startPoint != null && endPoint !=null) {
-            switch (mode) {
+        switch (mode) {
             case "LINE":
                 line.draw(g2);
                 break;
@@ -170,7 +180,6 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     select.draw(g2);
                 }
                 break;
-            }
         }
     }
 
@@ -183,6 +192,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         height = img.getHeight();
         buff_img = img;
         g2d = (Graphics2D) buff_img.createGraphics();
+        isSaved = true;
         this.setSize(width, height);
         this.revalidate();
         this.repaint();
@@ -216,19 +226,95 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         }
     }
 
+    public void flipping(int typeFlip) {
+        AffineTransform at = new AffineTransform();
+        if (startSelect == true) {
+            if (select.isIsCreating() == true) {
+                if (select.isIsSelected() == false) {  //Neu anh chua duoc co dinh tren Buffer
+                    int w = select.getWidth();
+                    int h = select.getHeight();
+                    if (typeFlip == 1) {   //lật dọc ảnh
+                        at = AffineTransform.getScaleInstance(1, -1);
+                        at.translate(0, -h);
+                    } else if (typeFlip == 2) { //Lật ngang ảnh
+                        at = AffineTransform.getScaleInstance(-1, 1);
+                        at.translate(-w, 0);
+                    }
+                    AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+                    int[] data = select.getData();
+                    BufferedImage Image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+                    Image.getRaster().setPixels(0, 0, w, h, data);
+                    Image = op.filter(Image, null);
+                    select.setIMG(Image); //sửa ảnh trong phần đã được chọn
+                }
+            }
+        } else {
+            if (typeFlip == 1) {
+                at = AffineTransform.getScaleInstance(1, -1);
+                at.translate(0, -buff_img.getHeight());
+            } else if (typeFlip == 2) {
+                at = AffineTransform.getScaleInstance(-1, 1);
+                at.translate(-buff_img.getWidth(), 0);
+            }
+            AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+            buff_img = op.filter(buff_img, null);
+            g2d = (Graphics2D) buff_img.getGraphics();
+        }
+        repaint();
+    }
+
+    public void rotate(int alpha) {
+        AffineTransform at = new AffineTransform();
+        if (startSelect == true) {
+            if (select.isIsCreating() == true) {
+                if (select.isIsSelected() == false) {
+                    //Neu anh chua duoc co dinh tren Buffer
+
+                    int w = select.getWidth();
+                    int h = select.getHeight();
+                    if (alpha == 90) {
+                        at.translate(h, 0);
+                    } else if (alpha == -90) {
+                        at.translate(0, w);
+                    }
+                    at.rotate(Math.toRadians(alpha), 0, 0);
+                    AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+                    int[] data = select.getData();
+                    BufferedImage Image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+                    Image.getRaster().setPixels(0, 0, w, h, data);
+                    Image = op.filter(Image, null);
+                    select.setIMG(Image);
+                }
+            }
+        } else {
+            at = new AffineTransform();
+            if (alpha == 90) {
+                at.translate(buff_img.getHeight(), 0);
+            } else if (alpha == -90) {
+                at.translate(0, buff_img.getWidth());
+            }
+            at.rotate(Math.toRadians(alpha));
+            AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+            buff_img = op.filter(buff_img, null);
+            g2d = (Graphics2D) buff_img.getGraphics();
+        }
+        repaint();
+    }
+
     public void Undo() {
         if (!undo.isEmpty()) {
             redo.push(buff_img);
             setImage(undo.pop());
         }
     }
-    
+
     public void Redo() {
         if (!redo.isEmpty()) {
             setImage(redo.pop());
             undo.push(buff_img);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -296,7 +382,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     @Override
     public void mousePressed(MouseEvent e) {//goi khi giu chuot
         startPoint = e.getPoint();
-        undo.push(buff_img);
+
         switch (mode) {
             case "PENCIL":
                 pencil.setPoint(startPoint, startPoint);
@@ -355,7 +441,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 if (polygon.getStartPoint() == null) {//chua su dung polygon
                     polygon.setStartPoint(startPoint);
                 }
-                line.setStrokeColor(colorChooser.getStrokeColor()); 
+                line.setStrokeColor(colorChooser.getStrokeColor());
                 line.setStroke(stroke.getStroke());
                 if (endPoint != null) {
                     //da ve 1 hoac nhieu duong thang roi => ta se ve duong thang tu diem cuoi duong thang truoc toi diem vua nhan
@@ -494,7 +580,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     text.setIsOpaque(textPanel.getIsOpaque());
                     text.setArea(this);
                     text.setFontArea();
-                    text.getArea().setForeground(colorChooser.getStrokeColor());
+                    text.getArea().setForeground(Color.RED);
                     text.getArea().setOpaque(textPanel.getIsOpaque());
                     repaint();
                     if (text.getIsCreated()) {
@@ -509,17 +595,10 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                         if (select.isIsDragging()) {
                             select.setEndOrigin(endPoint);
                             select.setIsCreating(true); //Danh dau anh da duoc khoi tao
-                            Point selP1 = new Point(Math.min(select.getStartOrigin().x, select.getEndOrigin().x) ,
-                            Math.min(select.getStartOrigin().y, select.getEndOrigin().y));
-                            
-                            Point selP2 = new Point(Math.max(select.getStartOrigin().x, select.getEndOrigin().x) ,
-                            Math.max(select.getStartOrigin().y, select.getEndOrigin().y));
-                            
-                            if (selP1.x < 0) selP1.x = 0;
-                            if (selP1.y < 0) selP1.y = 0;
-                            if (selP2.x > width) selP2.x = width;
-                            if (selP2.y > height) selP2.y = height;
-                            select.setIMG(buff_img.getSubimage(selP1.x, selP1.y , Math.abs(selP2.x - selP1.x), Math.abs(selP2.y - selP1.y)));
+                            select.setIMG(buff_img.getSubimage(Math.min(select.getStartOrigin().x, select.getEndOrigin().x),
+                                    Math.min(select.getStartOrigin().y, select.getEndOrigin().y),
+                                    Math.abs(select.getStartOrigin().x - select.getEndOrigin().x),
+                                    Math.abs(select.getStartOrigin().y - select.getEndOrigin().y)));
                             select.setIsDragging(false); //Drag xong
                         }
                     }
@@ -529,6 +608,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         startPoint = null;
         endPoint = null;
         repaint();
+        undo.push(buff_img);
     }
 
     @Override
@@ -647,6 +727,10 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     ) {
         jCoordinate.setText(e.getX() + ", " + e.getY() + " px");
 
+    }
+
+    BufferedImage getBuffer() {
+        return buff_img; //To change body of generated methods, choose Tools | Templates.
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
