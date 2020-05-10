@@ -15,7 +15,7 @@ import java.awt.image.WritableRaster;
 public class Undo {
     private int data[][];
     private final int size = 1000;
-    private int topUndo;
+    public int topUndo;
     private int[] w, h;
     private BufferedImage img;
     
