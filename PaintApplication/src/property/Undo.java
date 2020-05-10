@@ -14,8 +14,8 @@ import java.awt.image.WritableRaster;
  */
 public class Undo {
     private int data[][];
-    private final int size = 100;
-    private int topUndo, countUndo;
+    private final int size = 1000;
+    private int topUndo;
     private int[] w, h;
     private BufferedImage img;
     
@@ -24,31 +24,29 @@ public class Undo {
         w = new int[size];
         h = new int[size];
         topUndo = -1;
-        countUndo = 0;
     }
     public void push(BufferedImage buff_img) {
-        if (countUndo < 100) ++countUndo;
-        topUndo = (topUndo + 1) % 100;
+        //if (countUndo < 100) ++countUndo;
+        topUndo++;
         w[topUndo] = buff_img.getWidth();
         h[topUndo] = buff_img.getHeight();
         WritableRaster raster = buff_img.getRaster();
         data[topUndo] = raster.getPixels(0, 0, w[topUndo], h[topUndo], data[topUndo]);
     }
     public BufferedImage pop() {
-        if (countUndo > 0 && data[topUndo] != null) {
+        if (data[topUndo] != null) {
             img = new BufferedImage(w[topUndo], h[topUndo] , BufferedImage.TYPE_INT_RGB);
             img.getRaster().setPixels(0, 0, w[topUndo], h[topUndo], data[topUndo]);
-            countUndo--;
             w[topUndo] = 0;
             h[topUndo] = 0;
             data[topUndo] = null;
-            topUndo = (topUndo - 1) % 100;
+            topUndo--;
             return img;
         }
         return null;
     }
     public boolean isEmpty() {
-        if (countUndo == 0) return true;
+        if (topUndo == -1) return true;
         return false;
     }
 }

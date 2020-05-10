@@ -852,6 +852,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         // TODO add your handling code here:
         paintPanel.Undo();
         
+        
     }//GEN-LAST:event_bUndoActionPerformed
 
     private void bRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRedoActionPerformed

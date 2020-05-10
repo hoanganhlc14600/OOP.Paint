@@ -78,6 +78,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     private int height = 500;
     private JRadioButton isFill;
 
+    
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
     }
@@ -182,10 +183,12 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         width = img.getWidth();
         height = img.getHeight();
         buff_img = img;
+       
         g2d = (Graphics2D) buff_img.createGraphics();
         this.setSize(width, height);
         this.revalidate();
         this.repaint();
+       
     }
 
     public BufferedImage getImage() {
@@ -215,11 +218,13 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             return false;
         }
     }
-
+    private BufferedImage a;
     public void Undo() {
         if (!undo.isEmpty()) {
             redo.push(buff_img);
             setImage(undo.pop());
+        } else {
+            redo.push(buff_img);
         }
     }
     
