@@ -183,7 +183,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         width = img.getWidth();
         height = img.getHeight();
         buff_img = img;
-       
+        
         g2d = (Graphics2D) buff_img.createGraphics();
         this.setSize(width, height);
         this.revalidate();

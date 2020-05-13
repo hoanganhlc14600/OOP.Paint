@@ -12,17 +12,15 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import library.Library;
 
 /**
  *
@@ -33,10 +31,11 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     /**
      * Creates new form Main
      */
-    private PaintPanel paintPanel;
+    private final PaintPanel paintPanel;
     private int width, height;
-    private JPanel backgroundPanel = new JPanel();
+    public final JPanel backgroundPanel = new JPanel();
     private BufferedImage buff_img;
+    private Library library;
     public Main() {
         initComponents();
         
@@ -51,13 +50,6 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         paintPanel.setTextPanel(textPanel1);
         paintPanel.setColorChooser(colorChooser1);
         paintPanel.setIsFill(isFill);
-//        paintPanel.addPropertyChangeListener(new PropertyChangeListener(){
-//            @Override
-//            public void propertyChange(PropertyChangeEvent evt) {
-//                paintPanel.ChangeTool();
-//            }
-//            
-//        });
     }
     
     
@@ -119,6 +111,9 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         jLabel8 = new javax.swing.JLabel();
         jPanelText = new javax.swing.JPanel();
         textPanel1 = new property.TextPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLibrary = new javax.swing.JButton();
+        jRecord = new javax.swing.JButton();
         jScrollPane = new javax.swing.JScrollPane();
         jCoordinate = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -132,7 +127,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
 
         jFrame1.setAlwaysOnTop(true);
         jFrame1.setBounds(new java.awt.Rectangle(500, 300, 225, 200));
-        jFrame1.setPreferredSize(new java.awt.Dimension(225, 200));
+        jFrame1.setLocationByPlatform(true);
         jFrame1.setResizable(false);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -636,7 +631,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
                 .addGap(36, 36, 36))
         );
 
-        jTabbedPane1.addTab("Option", jPanelOption);
+        jTabbedPane1.addTab("Home", jPanelOption);
 
         jPanelText.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -659,6 +654,37 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         );
 
         jTabbedPane1.addTab("Text", jPanelText);
+
+        jLibrary.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/library.png"))); // NOI18N
+        jLibrary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLibraryActionPerformed(evt);
+            }
+        });
+
+        jRecord.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/record.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLibrary, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(992, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLibrary, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Option", jPanel1);
 
         jScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane.setAlignmentX(0.0F);
@@ -971,6 +997,13 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         }
     }//GEN-LAST:event_jTextField2KeyTyped
 
+    private void jLibraryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLibraryActionPerformed
+        // TODO add your handling code here:
+        if ( library == null || !library.isDisplayable()) {
+            library = new Library(paintPanel, this);
+        }
+    }//GEN-LAST:event_jLibraryActionPerformed
+
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -1052,12 +1085,15 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jLibrary;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jNew;
     private javax.swing.JMenuItem jOpen;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelOption;
     private javax.swing.JPanel jPanelText;
+    private javax.swing.JButton jRecord;
     private javax.swing.JMenuItem jSave;
     private javax.swing.JMenuItem jSaveAs;
     private javax.swing.JScrollPane jScrollPane;
