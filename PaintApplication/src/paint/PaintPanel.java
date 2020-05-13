@@ -203,20 +203,17 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     
     public void paste(){
         if(copy_img != null){
-            Graphics2D g = (Graphics2D) buff_img.getGraphics();
-            g.drawImage(copy_img, 0, 0, null);
-            g.dispose();
+            Point p = new Point(0,0);
+            select = new Selection();
+            select.setIMG(copy_img);
+            startSelect = true; //Da duoc khoi tao
+            select.setStartOrigin(p);
+            select.setStartPoint(p);
+            select.setEndPoint(p);
+            select.setEndOrigin(new Point(p.x+copy_img.getWidth(), p.y+copy_img.getHeight()));
+            select.setIsCreating(true);
+            repaint();
         }
-        repaint();
-        select = new Selection();
-        select.draw((Graphics2D) buff_img.getGraphics());
-        repaint();
-        
-        
-    }
-        
-    public double distance(Point a, Point b) {
-        return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
     }
 
     public void setImage(BufferedImage img) {
