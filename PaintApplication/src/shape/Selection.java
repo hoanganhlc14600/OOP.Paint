@@ -112,6 +112,8 @@ public class Selection extends Shape implements DrawType {
         }
         else if (!isSelected) {
             //Nếu đã tạo vùng thì vẽ khung chọn vùng để kéo đi
+            g2d.setColor(Color.RED);
+            g2d.setStroke(stroke);
             g2d.drawRect(startPoint.x, startPoint.y, w, h);
         }
         }
