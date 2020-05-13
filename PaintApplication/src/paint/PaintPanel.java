@@ -205,6 +205,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         if(copy_img != null && select != null){
             Point p = new Point(0,0);
             select = new Selection();
+            select.setIsPaste(true);
             select.setIMG(copy_img);
             startSelect = true; //Da duoc khoi tao
             select.setStartOrigin(p);

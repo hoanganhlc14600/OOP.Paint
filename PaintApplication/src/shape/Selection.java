@@ -21,6 +21,7 @@ public class Selection extends Shape implements DrawType {
     private boolean isCreating = false; //kiểm tra xem đã tạo phần chọn hay chưa
     private boolean isSelected = false; //kiểm tra hình đã được chọn chưa
     private boolean isDragging = false; //kiểm tra hình được chọn có đang di chuyển không
+    private boolean isPaste = false;
     private int[] data; //lưu pixel ảnh
     private int w;
     private int h;
@@ -84,6 +85,16 @@ public class Selection extends Shape implements DrawType {
     public int getHeight() {
         return h;
     }
+
+    public boolean isIsPaste() {
+        return isPaste;
+    }
+
+    public void setIsPaste(boolean isPaste) {
+        this.isPaste = isPaste;
+    }
+    
+    
     
     public void draw(Graphics2D g2d) {
         BasicStroke stroke = new BasicStroke(1f, BasicStroke.CAP_SQUARE, 
@@ -94,10 +105,12 @@ public class Selection extends Shape implements DrawType {
         BufferedImage img = null;
         //Tạo khoảng trống khi di chuyển
         if (startOrigin != null && endOrigin != null) {
-            g2d.setColor(Color.WHITE);
-            //tô lại khoảng trống màu trắng
-            g2d.fillRect(Math.min(startOrigin.x, endOrigin.x), Math.min(startOrigin.y, endOrigin.y) ,
+            if (!isPaste) {
+                g2d.setColor(Color.WHITE);
+                //tô lại khoảng trống màu trắng
+                g2d.fillRect(Math.min(startOrigin.x, endOrigin.x), Math.min(startOrigin.y, endOrigin.y) ,
                     Math.abs(startOrigin.x - endOrigin.x), Math.abs(startOrigin.y - endOrigin.y));
+            }
             //Tạo ảnh mới;
             img = new BufferedImage(w, h , BufferedImage.TYPE_INT_RGB); 
             img.getRaster().setPixels(0, 0, w, h, data); // Tạo lại ảnh mang thông số pixels cũ
