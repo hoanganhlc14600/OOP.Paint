@@ -976,6 +976,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         height = Integer.parseInt(jTextField2.getText());
         jFrame1.setVisible(false);
         buff_img = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
+        backgroundPanel.setPreferredSize(new Dimension(width + 5, height + 5));
         Graphics2D g = buff_img.createGraphics();
         g.fillRect(0, 0, width, height);
         paintPanel.setImage(buff_img);

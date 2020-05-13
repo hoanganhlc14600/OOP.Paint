@@ -52,7 +52,7 @@ public class Library extends javax.swing.JFrame {
             Logger.getLogger(Library.class.getName()).log(Level.SEVERE, null, ex);
         }
         paintPanel.setImage(img);
-        main.backgroundPanel.setPreferredSize(new Dimension(img.getWidth(), img.getHeight()));
+        main.backgroundPanel.setPreferredSize(new Dimension(img.getWidth() + 5, img.getHeight() + 5));
         this.dispose();
     }
     
