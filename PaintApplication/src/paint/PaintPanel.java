@@ -46,7 +46,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
      * Creates new form DrawPanel
      */
     Graphics2D g2d, g2; // doi tuong do hoa
-    private BufferedImage buff_img; // anh de ve
+    private BufferedImage buff_img, copy_img; // anh de ve
     private boolean isSaved;
     private Point startPoint, endPoint;
     private JLabel jCoordinate;
@@ -174,7 +174,47 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             }
         }
     }
-
+    public void cut(){
+        if(select != null){
+            int[] data = select.getData();
+            int w = select.getWidth();
+            int h = select.getHeight();
+            copy_img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+            copy_img.getRaster().setPixels(0, 0, w, h, data);
+            Graphics2D g = (Graphics2D) buff_img.getGraphics();
+            g.setColor(Color.WHITE);
+            g.fillRect(select.getStartPoint().x, select.getStartOrigin().y, w, h);
+            repaint();
+            select = null;
+            g.dispose();
+        }
+    }
+    
+    public void copy(){
+        if(select != null){
+            int[] data = select.getData();
+            int w = select.getWidth();
+            int h = select.getHeight();
+            copy_img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+            copy_img.getRaster().setPixels(0, 0, w, h, data);
+        }
+        
+    }
+    
+    public void paste(){
+        if(copy_img != null){
+            Graphics2D g = (Graphics2D) buff_img.getGraphics();
+            g.drawImage(copy_img, 0, 0, null);
+            g.dispose();
+        }
+        repaint();
+        select = new Selection();
+        select.draw((Graphics2D) buff_img.getGraphics());
+        repaint();
+        
+        
+    }
+        
     public double distance(Point a, Point b) {
         return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
     }

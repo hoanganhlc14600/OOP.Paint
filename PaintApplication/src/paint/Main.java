@@ -827,7 +827,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     }//GEN-LAST:event_jExitActionPerformed
 
     private void bPasteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPasteActionPerformed
-        // TODO add your handling code here:
+        paintPanel.paste();
     }//GEN-LAST:event_bPasteActionPerformed
 
     private void jOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOpenActionPerformed
@@ -863,11 +863,11 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     }//GEN-LAST:event_bSelectActionPerformed
 
     private void bCopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCopyActionPerformed
-        // TODO add your handling code here:
+        paintPanel.copy();
     }//GEN-LAST:event_bCopyActionPerformed
 
     private void bCutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCutActionPerformed
-        // TODO add your handling code here:
+       paintPanel.cut();
     }//GEN-LAST:event_bCutActionPerformed
 
     private void cbRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRotateActionPerformed
