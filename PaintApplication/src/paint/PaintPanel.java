@@ -202,7 +202,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     }
     
     public void paste(){
-        if(copy_img != null && select != null){
+        if(copy_img != null ){
             Point p = new Point(0,0);
             select = new Selection();
             select.setIsPaste(true);
