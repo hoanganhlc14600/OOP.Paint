@@ -14,7 +14,7 @@ import java.awt.image.WritableRaster;
  */
 public class Stack {
     private int data[][];
-    private final int size = 100;
+    private final int size = 1000;
     private int top;
     private int[] w, h;
     private BufferedImage img;
