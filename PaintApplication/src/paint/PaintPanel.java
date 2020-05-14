@@ -161,6 +161,12 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             }
         }
     }
+    
+    public void clear() {
+        undo.clear();
+        redo.clear();
+        isSaved = true;
+    }
     public void cut(){
         if(select != null){
             int[] data = select.getData();

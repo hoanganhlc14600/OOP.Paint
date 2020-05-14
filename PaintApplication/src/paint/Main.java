@@ -851,6 +851,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
             }
         }
         if (img != null) {
+            paintPanel.clear();
             paintPanel.setImage(img);
             backgroundPanel.setPreferredSize(new Dimension(paintPanel.getWidth()+5,paintPanel.getHeight()+5));
         }  
@@ -979,6 +980,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         backgroundPanel.setPreferredSize(new Dimension(width + 5, height + 5));
         Graphics2D g = buff_img.createGraphics();
         g.fillRect(0, 0, width, height);
+        paintPanel.clear();
         paintPanel.setImage(buff_img);
     }//GEN-LAST:event_jButton1ActionPerformed
 

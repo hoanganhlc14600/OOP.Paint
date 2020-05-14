@@ -49,7 +49,7 @@ public class Stack {
         return false;
     }
     public void clear() {
-        if (top > -1) {
+        while (top > -1) {
             w[top] = 0;
             h[top] = 0;
             data[top] = null;
