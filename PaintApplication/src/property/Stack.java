@@ -12,48 +12,48 @@ import java.awt.image.WritableRaster;
  *
  * @author Tuan Hien
  */
-public class Redo {
+public class Stack {
     private int data[][];
     private final int size = 100;
-    private int topRedo;
+    private int top;
     private int[] w, h;
     private BufferedImage img;
     
-    public Redo() {
+    public Stack() {
         data = new int[size][];
         w = new int[size];
         h = new int[size];
-        topRedo = -1;
+        top = -1;
     }
     public void push(BufferedImage buff_img) {
-        topRedo++;
-        w[topRedo] = buff_img.getWidth();
-        h[topRedo] = buff_img.getHeight();
+        top++;
+        w[top] = buff_img.getWidth();
+        h[top] = buff_img.getHeight();
         WritableRaster raster = buff_img.getRaster();
-        data[topRedo] = raster.getPixels(0, 0, w[topRedo], h[topRedo], data[topRedo]);
+        data[top] = raster.getPixels(0, 0, w[top], h[top], data[top]);
     }
     public BufferedImage pop() {
-        if (data[topRedo] != null) {
-            img = new BufferedImage(w[topRedo], h[topRedo] , BufferedImage.TYPE_INT_RGB);
-            img.getRaster().setPixels(0, 0, w[topRedo], h[topRedo], data[topRedo]);
-            w[topRedo] = 0;
-            h[topRedo] = 0;
-            data[topRedo] = null;
-            topRedo--;
+        if (data[top] != null) {
+            img = new BufferedImage(w[top], h[top] , BufferedImage.TYPE_INT_RGB);
+            img.getRaster().setPixels(0, 0, w[top], h[top], data[top]);
+            w[top] = 0;
+            h[top] = 0;
+            data[top] = null;
+            top--;
             return img;
         }
         return null;
     }
     public boolean isEmpty() {
-        if (topRedo == -1) return true;
+        if (top == -1) return true;
         return false;
     }
     public void clear() {
-        if (topRedo > -1) {
-            w[topRedo] = 0;
-            h[topRedo] = 0;
-            data[topRedo] = null;
-            topRedo--;
+        if (top > -1) {
+            w[top] = 0;
+            h[top] = 0;
+            data[top] = null;
+            top--;
         }
     }
 }

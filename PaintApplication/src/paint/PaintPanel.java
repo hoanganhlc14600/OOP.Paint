@@ -30,13 +30,11 @@ import shape.RightTriangle;
 import shape.RoundRect;
 import shape.Triangle;
 import shape.Curve;
-import java.lang.Math;
 import javax.swing.JRadioButton;
 import property.ColorChooser;
-import property.Redo;
+import property.Stack;
 import property.Stroke;
 import property.TextPanel;
-import property.Undo;
 import shape.Text;
 import shape.Selection;
 
@@ -64,13 +62,11 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     private String mode;
     private Stroke stroke;
     private ColorChooser colorChooser;
-    private Undo undo;
-    private Redo redo;
+    private Stack undo, redo;
     private Text text;
     private Selection select;
     private int x = 0;
     private double r = 15.0;
-    private boolean dragged;
     private TextPanel textPanel = new TextPanel();
     private int tempx, tempy;
     private boolean startSelect = false;
@@ -92,15 +88,6 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         this.textPanel = textPanel;
     }
 
-    private boolean testMousePressed(Point p, Point start, Point end) {
-        int a[] = {Math.min(start.x, end.x), Math.min(start.y, end.y), Math.max(start.x, end.x), Math.max(start.y, end.y)};
-        if (p.x > a[0] && p.x < a[2] && p.y > a[1] && p.y < a[3]) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public PaintPanel() {
         initComponents();
 
@@ -116,8 +103,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         eraser = new Eraser();
         bucket = new Bucket();
         buff_img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        undo = new Undo();
-        redo = new Redo();
+        undo = new Stack();
+        redo = new Stack();
         this.setSize(width, height);
         this.setLocation(5, 5);
 
@@ -256,7 +243,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             return false;
         }
     }
-    private BufferedImage a;
+    
     public void Undo() {
         if (!undo.isEmpty()) {
             redo.push(buff_img);
@@ -294,6 +281,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
 
     public void ChangeTool() {
         if (polygon.getStartPoint() != null) {
+            undo.push(buff_img);
             line.setPoint(endPoint, polygon.getStartPoint());
             line.draw(g2d);
             repaint();
@@ -307,6 +295,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             startPoint = null;
             endPoint = null;
         } else if (text != null) {
+            undo.push(buff_img);
             text.setString();
             text.removeArea(this);
             text.draw(g2, g2d);
@@ -314,6 +303,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             text = null;
         } else if (startSelect == true) {
             if (select.isIsCreating()) {
+                undo.push(buff_img);
                 select.setIsSelected(true);
                 select.draw(g2d);
                 select = null;
@@ -338,17 +328,17 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     @Override
     public void mousePressed(MouseEvent e) {//goi khi giu chuot
         startPoint = e.getPoint();
-        undo.push(buff_img);
         redo.clear();
-
         switch (mode) {
             case "PENCIL":
+                undo.push(buff_img);
                 pencil.setPoint(startPoint, startPoint);
                 pencil.setStroke(stroke.getStroke());
                 pencil.setStrokeColor(colorChooser.getStrokeColor());
                 pencil.draw(g2d);
                 break;
             case "ERASER":
+                undo.push(buff_img);
                 eraser.setPoint(startPoint, startPoint);
                 eraser.setStrokeColor(colorChooser.getFillColor());
                 eraser.setSize(10);
@@ -356,11 +346,13 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 eraser.draw(g2d);
                 break;
             case "LINE":
+                undo.push(buff_img);
                 line.setPoint(startPoint, startPoint);
                 line.setStrokeColor(colorChooser.getStrokeColor());
                 line.setStroke(stroke.getStroke());
                 break;
             case "OVAL":
+                undo.push(buff_img);
                 oval.setPoint(startPoint, startPoint);
                 oval.setDoFill(isFill.isSelected());
                 oval.setFillColor(colorChooser.getFillColor());
@@ -368,6 +360,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 oval.setStroke(stroke.getStroke());
                 break;
             case "RECTANGLE":
+                undo.push(buff_img);
                 rect.setPoint(startPoint, startPoint);
                 rect.setDoFill(isFill.isSelected());
                 rect.setStrokeColor(colorChooser.getStrokeColor());
@@ -375,6 +368,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 rect.setStroke(stroke.getStroke());
                 break;
             case "ROUNDRECTANGLE":
+                undo.push(buff_img);
                 roundRect.setPoint(startPoint, startPoint);
                 roundRect.setDoFill(isFill.isSelected());
                 roundRect.setStrokeColor(colorChooser.getStrokeColor());
@@ -382,6 +376,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 roundRect.setStroke(stroke.getStroke());
                 break;
             case "TRIANGLE":
+                undo.push(buff_img);
                 triangle.setPoint(startPoint, startPoint);
                 triangle.setDoFill(isFill.isSelected());
                 triangle.setStrokeColor(colorChooser.getStrokeColor());
@@ -389,6 +384,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 triangle.setStroke(stroke.getStroke());
                 break;
             case "RIGHTTRIANGLE":
+                undo.push(buff_img);
                 rightTriangle.setPoint(startPoint, startPoint);
                 rightTriangle.setDoFill(isFill.isSelected());
                 rightTriangle.setStrokeColor(colorChooser.getStrokeColor());
@@ -396,6 +392,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 rightTriangle.setStroke(stroke.getStroke());
                 break;
             case "POLYGON":
+                undo.push(buff_img);
                 if (polygon.getStartPoint() == null) {//chua su dung polygon
                     polygon.setStartPoint(startPoint);
                 }
@@ -412,6 +409,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 }
                 break;
             case "BUCKET":
+                undo.push(buff_img);
                 bucket.addArrPoint(startPoint);
                 bucket.setColor(colorChooser.getStrokeColor());
                 bucket.setPoint(startPoint, startPoint);
@@ -419,6 +417,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 break;
             case "CURVE":
                 if (curve == null) {
+                    undo.push(buff_img);
                     curve = new Curve();
                     curve.setStrokeColor(colorChooser.getStrokeColor());
                     curve.setStartPoint(startPoint);
@@ -445,6 +444,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                     text.setIsCreated(false);
                     return;
                 } else {
+                    undo.push(buff_img);
                     text.setIsCreated(true);
                     if (text.getStart() != null && text.getFinish() != null) {
                         if (text.checkOverLap() == false) {
@@ -461,6 +461,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 if (select != null) {
                     if (select.isIsCreating()) {
                         if (!testSel(startPoint)) { // Neu click chuot khong trong khoang Select thi coi nhu hoan thanh
+                            undo.push(buff_img);
                             select.setIsSelected(true);
                             select.draw(g2d);
                             repaint();
