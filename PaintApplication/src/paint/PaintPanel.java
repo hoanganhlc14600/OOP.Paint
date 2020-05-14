@@ -45,7 +45,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
      */
     Graphics2D g2d, g2; // doi tuong do hoa
     private BufferedImage buff_img, copy_img; // anh de ve
-    private boolean isSaved;
+    public boolean isSaved = true;
     private Point startPoint, endPoint;
     private JLabel jCoordinate;
     private Line line;
@@ -582,6 +582,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         }
         startPoint = null;
         endPoint = null;
+        isSaved = false;
         repaint();
     }
 

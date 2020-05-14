@@ -34,7 +34,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private final PaintPanel paintPanel;
     private int width, height;
     public final JPanel backgroundPanel = new JPanel();
-    private BufferedImage buff_img;
+    private BufferedImage buff_img, img;
     private Library library;
     public Main() {
         initComponents();
@@ -71,6 +71,11 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
+        jLabel13 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelOption = new javax.swing.JPanel();
         bPaste = new javax.swing.JButton();
@@ -212,6 +217,70 @@ public class Main extends javax.swing.JFrame implements ActionListener{
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog1.setTitle("BK Paint");
+        jDialog1.setAlwaysOnTop(true);
+        jDialog1.setLocationByPlatform(true);
+        jDialog1.setMinimumSize(new java.awt.Dimension(300, 120));
+        jDialog1.setModal(true);
+        jDialog1.setPreferredSize(new java.awt.Dimension(300, 120));
+        jDialog1.setResizable(false);
+        jDialog1.setSize(new java.awt.Dimension(300, 120));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel13.setText("Do you want to save changes ? ");
+
+        jButton2.setText("Save");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Don't Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Cancel");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addGap(21, 21, 21))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -793,7 +862,9 @@ public class Main extends javax.swing.JFrame implements ActionListener{
 
     private void jNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNewActionPerformed
         // TODO add your handling code here:
+        if (!paintPanel.isSaved) jDialog1.setVisible(true);
         jFrame1.setVisible(true);
+        
     }//GEN-LAST:event_jNewActionPerformed
 
     private void jSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSaveActionPerformed
@@ -816,14 +887,17 @@ public class Main extends javax.swing.JFrame implements ActionListener{
             }
             
         }
+        paintPanel.isSaved = true;
         
     }
     private void jSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSaveAsActionPerformed
         // TODO add your handling code here:
+        saveImage();
     }//GEN-LAST:event_jSaveAsActionPerformed
 
     private void jExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitActionPerformed
         // TODO add your handling code here:
+        System.exit(1);
     }//GEN-LAST:event_jExitActionPerformed
 
     private void bPasteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPasteActionPerformed
@@ -841,7 +915,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         fileChooser.setFileFilter(all);
         fileChooser.setDialogTitle("Open a new image");
         int check = fileChooser.showSaveDialog(null);
-        BufferedImage img = null;
+        img = null;
         if (check == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             try {
@@ -851,9 +925,9 @@ public class Main extends javax.swing.JFrame implements ActionListener{
             }
         }
         if (img != null) {
-            paintPanel.clear();
-            paintPanel.setImage(img);
-            backgroundPanel.setPreferredSize(new Dimension(paintPanel.getWidth()+5,paintPanel.getHeight()+5));
+            if (!paintPanel.isSaved) {
+                jDialog1.setVisible(true);
+            }
         }  
     }//GEN-LAST:event_jOpenActionPerformed
 
@@ -1007,6 +1081,28 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         }
     }//GEN-LAST:event_jLibraryActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        saveImage();
+        jDialog1.dispose();
+        paintPanel.clear();
+        paintPanel.setImage(img);
+        backgroundPanel.setPreferredSize(new Dimension(paintPanel.getWidth()+5,paintPanel.getHeight()+5));
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        jDialog1.dispose();
+        paintPanel.clear();
+        paintPanel.setImage(img);
+        backgroundPanel.setPreferredSize(new Dimension(paintPanel.getWidth()+5,paintPanel.getHeight()+5));
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        jDialog1.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -1073,13 +1169,18 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private property.ColorChooser colorChooser1;
     private javax.swing.JRadioButton isFill;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jCoordinate;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JMenuItem jExit;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
