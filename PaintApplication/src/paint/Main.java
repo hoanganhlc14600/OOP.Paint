@@ -27,7 +27,7 @@ import library.Library;
  * @author Tuan Hien
  */
 public class Main extends javax.swing.JFrame implements ActionListener{
-
+    //.
     /**
      * Creates new form Main
      */
@@ -862,6 +862,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
 
     private void jNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNewActionPerformed
         // TODO add your handling code here:
+        img = paintPanel.getImage();
         if (!paintPanel.isSaved) jDialog1.setVisible(true);
         jFrame1.setVisible(true);
         
