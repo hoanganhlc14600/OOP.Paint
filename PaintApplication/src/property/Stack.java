@@ -55,4 +55,15 @@ public class Stack {
             top--;
         }
     }
+    public BufferedImage getImageIndex(int i){
+        if(i >= 0 && i <= top){
+            img = new BufferedImage(w[i], h[i] , BufferedImage.TYPE_INT_RGB);
+            img.getRaster().setPixels(0, 0, w[i], h[i], data[i]);
+            return img;
+        }
+        return null;
+    }
+    public int getTop(){
+        return top;
+    }
 }
