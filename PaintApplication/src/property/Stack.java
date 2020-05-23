@@ -18,7 +18,6 @@ public class Stack {
     private int top;
     private int[] w, h;
     private BufferedImage img;
-    
     public Stack() {
         data = new int[size][];
         w = new int[size];
