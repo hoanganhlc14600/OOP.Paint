@@ -33,7 +33,6 @@ public class Replay extends JPanel implements Runnable {
      * 
      */
     private BufferedImage buff_img,null_img;
-    private Image img;
     private int delay = 30;
     private boolean isPlaying;
     private JToggleButton bPlay;

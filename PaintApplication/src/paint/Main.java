@@ -21,6 +21,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import library.Library;
+import tool.ReplayDialog;
 
 /**
  *
@@ -36,6 +37,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     public final JPanel backgroundPanel = new JPanel();
     private BufferedImage buff_img, img;
     private Library library;
+    private ReplayDialog replayDialog;
     public Main() {
         initComponents();
         
@@ -225,7 +227,6 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         jDialog1.setLocationByPlatform(true);
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 120));
         jDialog1.setModal(true);
-        jDialog1.setPreferredSize(new java.awt.Dimension(300, 120));
         jDialog1.setResizable(false);
         jDialog1.setSize(new java.awt.Dimension(300, 120));
 
@@ -293,7 +294,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
 
         jPanelOption.setBackground(new java.awt.Color(245, 245, 245));
 
-        bPaste.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/copy.png"))); // NOI18N
+        bPaste.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/paste.png"))); // NOI18N
         bPaste.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bPasteActionPerformed(evt);
@@ -732,6 +733,11 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         });
 
         jRecord.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/record.png"))); // NOI18N
+        jRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRecordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1103,6 +1109,12 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         // TODO add your handling code here:
         jDialog1.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRecordActionPerformed
+        // TODO add your handling code here:
+        paintPanel.ChangeTool();
+        replayDialog = new ReplayDialog(this, true);
+    }//GEN-LAST:event_jRecordActionPerformed
 
     @Override
     public void actionPerformed(ActionEvent e) {

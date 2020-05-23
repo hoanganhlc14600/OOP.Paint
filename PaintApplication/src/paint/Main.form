@@ -152,9 +152,6 @@
           <Dimension value="[300, 120]"/>
         </Property>
         <Property name="modal" type="boolean" value="true"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[300, 120]"/>
-        </Property>
         <Property name="resizable" type="boolean" value="false"/>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[300, 120]"/>
@@ -671,7 +668,7 @@
             <Component class="javax.swing.JButton" name="bPaste">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagebutton/copy.png"/>
+                  <Image iconType="3" name="/imagebutton/paste.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -1215,6 +1212,9 @@
                   <Image iconType="3" name="/imagebutton/record.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRecordActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
