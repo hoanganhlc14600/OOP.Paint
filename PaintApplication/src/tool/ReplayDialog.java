@@ -9,15 +9,16 @@ package tool;
  *
  * @author Tuan Hien
  */
+import property.Stack;
 public class ReplayDialog extends javax.swing.JDialog {
-    private Replay replay;
+    private  static Replay replay;
     /**
      * Creates new form ReplayDialog
      */
-    public ReplayDialog(java.awt.Frame parent, boolean modal) {
+    public ReplayDialog(java.awt.Frame parent, boolean modal,Stack stack) {
         super(parent, modal);
+        replay = new Replay(stack);
         initComponents();
-        replay = new Replay();
         this.jScrollPane1.add(replay);
         this.setVisible(true);
     }
@@ -105,6 +106,10 @@ public class ReplayDialog extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if (replay.isPlaying()) {
+        } else {
+            replay.startReplay();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -137,7 +142,7 @@ public class ReplayDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ReplayDialog dialog = new ReplayDialog(new javax.swing.JFrame(), true);
+                ReplayDialog dialog = new ReplayDialog(new javax.swing.JFrame(), true,replay.getStack());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -1113,7 +1113,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private void jRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRecordActionPerformed
         // TODO add your handling code here:
         paintPanel.ChangeTool();
-        replayDialog = new ReplayDialog(this, true);
+        replayDialog = new ReplayDialog(this, true,paintPanel.getUndo());
     }//GEN-LAST:event_jRecordActionPerformed
 
     @Override
