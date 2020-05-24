@@ -23,6 +23,9 @@ public class ReplayDialog extends javax.swing.JDialog {
         this.setVisible(true);
     }
 
+    public void updateSpeedVideo(int speed){
+        replay.setDelay(speed);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +46,11 @@ public class ReplayDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jToggleButton1.setText("⏸");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("⏵");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -54,6 +62,12 @@ public class ReplayDialog extends javax.swing.JDialog {
         jButton2.setText(" ⏩");
 
         jButton3.setText("⏪");
+
+        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider1StateChanged(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Speed:");
@@ -106,11 +120,22 @@ public class ReplayDialog extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (replay.isPlaying()) {
-        } else {
+        if (replay.isPlaying()){
+        }
+        else {
             replay.startReplay();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+        // TODO add your handling code here:
+        updateSpeedVideo(jSlider1.getValue());
+    }//GEN-LAST:event_jSlider1StateChanged
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        replay.pauseReplay();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments

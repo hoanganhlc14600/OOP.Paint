@@ -6,52 +6,28 @@
 package tool;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import shape.DrawType;
 import property.Stack;
 /**
  *
- * @author admin
+ * @author Dang Hung
  */
 public class Replay extends JPanel implements Runnable {
-
-    /**
-     * 
-     */
-    private BufferedImage buff_img;
-    
-    private int delay = 30;
-    private boolean isPlaying;
-    private JToggleButton bPlay;
+    private BufferedImage buff_img; //buf de cap nhat cac image len panel
+    private int delay = 30; //set speed for video
+    private boolean isPlaying; //kiem tra resume or stop
     private Thread thread = null;
     private Graphics2D g2d, g2;
-    private Stack stack;
+    private Stack stack; //stack undo : chieu lai undo 
     private int width = 800;
     private int height = 500;
-    private int currentImage = 0;
+    private int currentImage = 0; //anh hien tai duoc ve len panel tu stack 
     private Image null_img;
-    
-    public void setDelay(int delay) {
-        this.delay = (105 - delay) / 2;
-    }
-
-    public void setButton(JToggleButton bPlay) {
-        this.bPlay = bPlay;
-    }
     
     public Replay(Stack stack) {
         this.stack = stack;
@@ -70,19 +46,29 @@ public class Replay extends JPanel implements Runnable {
     public Stack getStack(){
         return stack;
     }
+    
+    public void setDelay(int delay) {
+        this.delay = (105 - delay) / 2;
+    }
+    
     //method is called when use replay button
     public void startReplay() {
         if (thread == null) {
-            refresh();
             thread = new Thread(this);
             isPlaying = true;
             thread.start();//start with this.run
         }
         isPlaying = true;
     }
+    public void pauseReplay(){
+        isPlaying = false;
+    }
     
-    public void refresh() {
-        
+    public void refresh() {//tao anh trang ban dau
+        g2 = (Graphics2D) buff_img.getGraphics();
+        g2.drawImage(null_img, 0, 0, null);
+        g2.dispose();
+        repaint();
     }
     
     public boolean isPlaying() {
@@ -91,10 +77,6 @@ public class Replay extends JPanel implements Runnable {
 
     public void setImage(BufferedImage img) {
         buff_img = img;
-    }
-
-    public BufferedImage getImage() {
-        return buff_img;
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -111,31 +93,20 @@ public class Replay extends JPanel implements Runnable {
         int increDelay = 60;
         while (currentImage <= stack.getTop()){//khi chua chay het stack
             if (isPlaying == false) {//isplaying == false: stop
-                continue;
+                break;
             }
             setImage(stack.getImageIndex(currentImage)); //buf_img = currentImage
             try {
-                Thread.sleep(delay);//delay : toc do chay video
+                Thread.sleep(delay*increDelay);//delay : toc do chay video
             } catch (InterruptedException ex) {
                 System.out.println("error here: replayPanel in run() method");
             }
             repaint();//ve lai
+            currentImage ++;
         }
         System.gc();
         isPlaying = false;
         thread = null;
-    }
-    
-    public BufferedImage getBuffer() {
-        return buff_img;
-    }
-    
-    public void dispose() {
-        null_img = null;
-        buff_img = null;
-        g2.dispose();
-        g2d.dispose();
-        System.gc();
     }
     /**
      * This method is called from within the constructor to initialize the form.
