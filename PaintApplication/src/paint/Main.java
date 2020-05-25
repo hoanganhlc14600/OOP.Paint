@@ -111,13 +111,13 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         bRoundRectangle = new javax.swing.JToggleButton();
         bTriangle = new javax.swing.JToggleButton();
         bRightTriangle = new javax.swing.JToggleButton();
-        stroke1 = new property.Stroke();
+        stroke1 = new tool.Stroke();
         jSeparator3 = new javax.swing.JSeparator();
-        colorChooser1 = new property.ColorChooser();
+        colorChooser1 = new color.ColorChooser();
         isFill = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jPanelText = new javax.swing.JPanel();
-        textPanel1 = new property.TextPanel();
+        textPanel1 = new tool.TextPanel();
         jPanel1 = new javax.swing.JPanel();
         jLibrary = new javax.swing.JButton();
         jRecord = new javax.swing.JButton();
@@ -1113,6 +1113,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private void jRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRecordActionPerformed
         // TODO add your handling code here:
         paintPanel.ChangeTool();
+        paintPanel.getUndo().push(paintPanel.getImage());
         replayDialog = new ReplayDialog(this, true,paintPanel.getUndo());
     }//GEN-LAST:event_jRecordActionPerformed
 
@@ -1179,7 +1180,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JButton bUndo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbRotate;
-    private property.ColorChooser colorChooser1;
+    private color.ColorChooser colorChooser1;
     private javax.swing.JRadioButton isFill;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -1222,7 +1223,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private property.Stroke stroke1;
-    private property.TextPanel textPanel1;
+    private tool.Stroke stroke1;
+    private tool.TextPanel textPanel1;
     // End of variables declaration//GEN-END:variables
 }

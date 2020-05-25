@@ -11,15 +11,16 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
-import property.Stack;
 /**
  *
  * @author Dang Hung
  */
 public class Replay extends JPanel implements Runnable {
     private BufferedImage buff_img; //buf de cap nhat cac image len panel
-    private int delay = 30; //set speed for video
+    private int delay = 20; //set speed for video
     private boolean isPlaying; //kiem tra resume or stop
     private Thread thread = null;
     private Graphics2D g2d, g2;
@@ -48,7 +49,7 @@ public class Replay extends JPanel implements Runnable {
     }
     
     public void setDelay(int delay) {
-        this.delay = (105 - delay) / 2;
+        this.delay = (100 - delay)/ 2;
     }
     
     //method is called when use replay button
@@ -62,13 +63,6 @@ public class Replay extends JPanel implements Runnable {
     }
     public void pauseReplay(){
         isPlaying = false;
-    }
-    
-    public void refresh() {//tao anh trang ban dau
-        g2 = (Graphics2D) buff_img.getGraphics();
-        g2.drawImage(null_img, 0, 0, null);
-        g2.dispose();
-        repaint();
     }
     
     public boolean isPlaying() {
@@ -90,16 +84,15 @@ public class Replay extends JPanel implements Runnable {
     }
     @Override
     public void run() {
-        int increDelay = 60;
         while (currentImage <= stack.getTop()){//khi chua chay het stack
             if (isPlaying == false) {//isplaying == false: stop
                 break;
             }
             setImage(stack.getImageIndex(currentImage)); //buf_img = currentImage
             try {
-                Thread.sleep(delay*increDelay);//delay : toc do chay video
+                Thread.sleep(delay*20);//delay : toc do chay video
             } catch (InterruptedException ex) {
-                System.out.println("error here: replayPanel in run() method");
+                Logger.getLogger(Replay.class.getName()).log(Level.SEVERE, null, ex);
             }
             repaint();//ve lai
             currentImage ++;
