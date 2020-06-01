@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class Curve extends Shape implements DrawType{
     private int state = 1;//trang thai cua doan thang
     private ArrayList<Point> curveLine = new ArrayList<>();
-    private ArrayList<Point> State1, State2,State3;
     public Curve(){
         //tao 4 diem ban dau cho CurveLine de tien loi cho viec set cac diem
         //vi diem dau la start point va diem cuoi doan thang o cuoi CurveLine

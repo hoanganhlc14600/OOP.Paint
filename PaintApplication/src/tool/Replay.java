@@ -25,8 +25,8 @@ public class Replay extends JPanel implements Runnable {
     private Thread thread = null;
     private Graphics2D g2d, g2;
     private Stack stack; //stack undo : chieu lai undo 
-    private int width = 800;
-    private int height = 500;
+    private final int width = 800;
+    private final int height = 500;
     private int currentImage = 0; //anh hien tai duoc ve len panel tu stack 
     private Image null_img;
     

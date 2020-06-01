@@ -20,7 +20,6 @@ public class Oval extends Shape implements DrawType{
         this.fillColor = fillColor;
     }
     
-    
     @Override
     public void draw(Graphics2D g2d) {
         BasicStroke stroke = new BasicStroke(width, cap, join, miterlimit, dash, dash_phase);

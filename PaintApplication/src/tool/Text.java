@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package shape;
+package tool;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -13,6 +13,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import shape.Shape;
 
 /**
  *

@@ -35,7 +35,7 @@ import color.ColorChooser;
 import tool.Stack;
 import tool.Stroke;
 import tool.TextPanel;
-import shape.Text;
+import tool.Text;
 import shape.Selection;
 
 public class PaintPanel extends javax.swing.JPanel implements MouseListener, MouseMotionListener {

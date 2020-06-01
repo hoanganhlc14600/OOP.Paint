@@ -40,8 +40,10 @@ public class Bucket extends Shape implements DrawType{
     //thuat toan to mau loang - bfs
     public void spreadFill(BufferedImage image){
         ArrayList<Point> listPoints = new ArrayList<>();
-        if(color_before == color_fill)//check color tai diem xet neu da to dung mau thi dung
+        if(color_before == color_fill){
+            //check color tai diem xet neu da to dung mau thi dung
             return;
+        }
         else {
             image.setRGB(startPoint.x, startPoint.y, color_fill);//to cho diem anh toa do click
             listPoints.add(startPoint);//them click vao dau cua hang doi de thuc hien loang tu click

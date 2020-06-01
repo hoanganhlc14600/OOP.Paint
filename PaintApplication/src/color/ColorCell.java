@@ -35,7 +35,5 @@ public class ColorCell extends ImageIcon{
         g.setColor(color);
         g.fillRect(5, 5, WIDTH, HEIGHT);
     }
-     
-    
     
 }
