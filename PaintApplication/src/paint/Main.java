@@ -954,6 +954,21 @@ public class Main extends javax.swing.JFrame implements ActionListener{
 
     private void cbRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRotateActionPerformed
         // TODO add your handling code here:
+        if (cbRotate.getSelectedItem() == cbRotate.getItemAt(1)) {
+            paintPanel.rotate(90);
+            
+        } else if (cbRotate.getSelectedItem() == cbRotate.getItemAt(2)) {
+            paintPanel.rotate(-90);
+        } else if (cbRotate.getSelectedItem() == cbRotate.getItemAt(3)) {
+            paintPanel.flipping(1);
+            
+        } else if (cbRotate.getSelectedItem() == cbRotate.getItemAt(4)) {
+            paintPanel.flipping(2);
+        }
+        buff_img = paintPanel.getImage();
+        backgroundPanel.setPreferredSize(new Dimension(paintPanel.getWidth() + 5, paintPanel.getHeight() + 5));
+        paintPanel.setSize(buff_img.getWidth(), buff_img.getHeight());
+        cbRotate.setSelectedIndex(0);
     }//GEN-LAST:event_cbRotateActionPerformed
 
     private void bUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUndoActionPerformed

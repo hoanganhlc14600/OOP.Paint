@@ -9,6 +9,8 @@ package paint;
  *
  * @author All
  */
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -169,6 +171,82 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         redo.clear();
         isSaved = true;
     }
+    
+    public void flipping(int typeFlip) {
+        AffineTransform at = new AffineTransform();
+        if (startSelect == true) {
+            if (select.isIsCreating() == true) {
+                if (select.isIsSelected() == false) {  //Neu anh chua duoc co dinh tren Buffer
+                    int w = select.getWidth();
+                    int h = select.getHeight();
+                    if (typeFlip == 1) {   //lật dọc ảnh
+                        at = AffineTransform.getScaleInstance(1, -1);
+                        at.translate(0, -h);
+                    } else if (typeFlip == 2) { //Lật ngang ảnh
+                        at = AffineTransform.getScaleInstance(-1, 1);
+                        at.translate(-w, 0);
+                    }
+                    AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+                    int[] data = select.getData();
+                    BufferedImage Image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+                    Image.getRaster().setPixels(0, 0, w, h, data);
+                    Image = op.filter(Image, null);
+                    select.setIMG(Image); //sửa ảnh trong phần đã được chọn
+                }
+            }
+        } else {
+            if (typeFlip == 1) {
+                at = AffineTransform.getScaleInstance(1, -1);
+                at.translate(0, -buff_img.getHeight());
+            } else if (typeFlip == 2) {
+                at = AffineTransform.getScaleInstance(-1, 1);
+                at.translate(-buff_img.getWidth(), 0);
+            }
+            AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+            buff_img = op.filter(buff_img, null);
+            g2d = (Graphics2D) buff_img.getGraphics();
+        }
+        repaint();
+    }
+
+    public void rotate(int alpha) {
+        AffineTransform at = new AffineTransform();
+        if (startSelect == true) {
+            if (select.isIsCreating() == true) {
+                if (select.isIsSelected() == false) {
+                    //Neu anh chua duoc co dinh tren Buffer
+
+                    int w = select.getWidth();
+                    int h = select.getHeight();
+                    if (alpha == 90) {
+                        at.translate(h, 0);
+                    } else if (alpha == -90) {
+                        at.translate(0, w);
+                    }
+                    at.rotate(Math.toRadians(alpha), 0, 0);
+                    AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+                    int[] data = select.getData();
+                    BufferedImage Image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+                    Image.getRaster().setPixels(0, 0, w, h, data);
+                    Image = op.filter(Image, null);
+                    select.setIMG(Image);
+                }
+            }
+        } else {
+            at = new AffineTransform();
+            if (alpha == 90) {
+                at.translate(buff_img.getHeight(), 0);
+            } else if (alpha == -90) {
+                at.translate(0, buff_img.getWidth());
+            }
+            at.rotate(Math.toRadians(alpha));
+            AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+            buff_img = op.filter(buff_img, null);
+            g2d = (Graphics2D) buff_img.getGraphics();
+        }
+        repaint();
+    }
+    
     public void cut(){
         if(select != null){
             int[] data = select.getData();
