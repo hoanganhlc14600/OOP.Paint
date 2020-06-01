@@ -619,11 +619,11 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                         if (startSEL.y < 0) {
                             startSEL.y = 0;
                         }
-                        if (endSEL.x >= width) {
-                            endSEL.x = width - 1;
+                        if (endSEL.x > width) {
+                            endSEL.x = width;
                         }
-                        if (endSEL.y >= height) {
-                            endSEL.y = height - 1;
+                        if (endSEL.y > height) {
+                            endSEL.y = height;
                         }
                         //Neu anh chua tao thi tao diem bat dau va ket thuc roi danh dau la dang keo -> released
                         select.setPoint(startSEL, endSEL);
