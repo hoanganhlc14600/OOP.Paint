@@ -358,7 +358,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
         if (!redo.isEmpty()) {
             undo.push(buff_img);
             setImage(redo.pop());
-            
+            replay.push(buff_img);
         }
     }
     /**

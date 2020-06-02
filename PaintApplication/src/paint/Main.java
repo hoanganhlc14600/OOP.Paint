@@ -288,6 +288,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BKPaint");
         setBackground(new java.awt.Color(255, 51, 102));
+        setLocationByPlatform(true);
         setName("MainFrame"); // NOI18N
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));

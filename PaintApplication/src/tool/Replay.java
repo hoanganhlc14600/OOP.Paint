@@ -25,8 +25,8 @@ public class Replay extends JPanel implements Runnable {
     private Thread thread = null;
     private Graphics2D g2d, g2;
     private Stack stack; //stack undo : chieu lai undo 
-    private final int width = 800;
-    private final int height = 500;
+    private int width = 800;
+    private int height = 500;
     private int currentImage = 0; //anh hien tai duoc ve len panel tu stack 
     private Image null_img;
     
@@ -42,6 +42,7 @@ public class Replay extends JPanel implements Runnable {
         g2.setColor(new Color(255, 255, 255));
         g2.fillRect(0, 0, buff_img.getWidth(), buff_img.getHeight());
         g2.dispose();
+        this.setLocation(10, 10);
     }
 
     public int getCurrentImage() {
@@ -63,6 +64,15 @@ public class Replay extends JPanel implements Runnable {
     public void setDelay(int delay) {
         this.delay = (100 - delay)/ 2;
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+    
     
     //method is called when use replay button
     public void startReplay() {
@@ -100,6 +110,9 @@ public class Replay extends JPanel implements Runnable {
             if (isPlaying == false) {//isplaying == false: stop
                 break;
             }
+            width = stack.getImageIndex(currentImage).getWidth();
+            height = stack.getImageIndex(currentImage).getHeight();
+            this.setSize(width, height);
             setImage(stack.getImageIndex(currentImage)); //buf_img = currentImage
             try {
                 Thread.sleep(delay*20);//delay : toc do chay video
