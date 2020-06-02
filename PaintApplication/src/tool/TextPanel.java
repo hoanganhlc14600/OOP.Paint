@@ -21,7 +21,7 @@ public class TextPanel extends javax.swing.JPanel {
     private int fontStyle;//kiểu Font chữ
     private int fontSize;//Kích thước chữ
 
-    private boolean isOpaque = true ; // >< transparent:trong suốt. liên quan đến vấn đề đoạn văn bản sau và đoạn văn bản trước có phần giao nhau
+    private boolean isOpaque = false ; // >< transparent:trong suốt. liên quan đến vấn đề đoạn văn bản sau và đoạn văn bản trước có phần giao nhau
     private Font font;
 //getter and setter 
 

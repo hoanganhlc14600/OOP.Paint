@@ -34,6 +34,7 @@ import shape.Triangle;
 import shape.Curve;
 import javax.swing.JRadioButton;
 import color.ColorChooser;
+import java.awt.geom.Ellipse2D;
 import tool.Stack;
 import tool.Stroke;
 import tool.TextPanel;
@@ -46,7 +47,7 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
      * Creates new form DrawPanel
      */
     Graphics2D g2d, g2; // doi tuong do hoa
-    private BufferedImage buff_img, copy_img; // anh de ve
+    private BufferedImage buff_img, copy_img, sub_img; // anh de ve
     public boolean isSaved = false;
     private Point startPoint, endPoint;
     private JLabel jCoordinate;
@@ -160,6 +161,21 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
                 if (select != null) {
                     select.draw(g2);
                 }
+                break;
+            case "MAGNIFIER":
+                if (startPoint.x < 20) startPoint.x = 20;
+                if (startPoint.x > buff_img.getWidth() - 20) startPoint.x = buff_img.getWidth() - 20;
+                if (startPoint.y < 20) startPoint.y = 20;
+                if (startPoint.y > buff_img.getHeight() - 20) startPoint.y = buff_img.getHeight() - 20;
+                
+                sub_img = buff_img.getSubimage(startPoint.x-20, startPoint.y-20, 40, 40);
+                
+                g2.scale(3, 3);
+                g2.setClip(new Ellipse2D.Float(startPoint.x/3 -20, startPoint.y/3-20, 40, 40));
+                g2.drawImage(sub_img, null, startPoint.x/3 -20, startPoint.y/3-20);
+                g2.setColor(Color.pink);
+                g2.drawOval(startPoint.x/3 -19, startPoint.y/3-19, 38, 38);
+                
                 break;
             }
         }
@@ -797,6 +813,11 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
     @Override
     public void mouseMoved(MouseEvent e
     ) {
+        if (mode == "MAGNIFIER") {
+            startPoint = e.getPoint();
+            endPoint = startPoint;
+            repaint();
+        }
         jCoordinate.setText(e.getX() + ", " + e.getY() + " px");
 
     }
