@@ -25,24 +25,55 @@ public class ColorChooser extends javax.swing.JPanel {
      * Creates new form ColorChooser
      */
     public ColorChooser() {
-        color1Icon = new ColorCell(Color.black);
-        color2Icon = new ColorCell(Color.white);
+        color1Icon = new ColorCell(Color.black, 53, 53, 5);
+        color2Icon = new ColorCell(Color.white, 53, 53, 5);
         strokeColor = Color.BLACK;
         fillColor = Color.WHITE;
         initComponents();
         bColor1.setIcon(color1Icon);
         bColor2.setIcon(color2Icon);
+        jButton2.setIcon(new ColorCell(new Color(0,0,0), 23, 23, 3));
+        jButton3.setIcon(new ColorCell(new Color(127,127,127), 23, 23, 3));
+        jButton4.setIcon(new ColorCell(new Color(136, 0, 21), 23, 23, 3));
+        jButton5.setIcon(new ColorCell(new Color(237,28,36), 23, 23, 3));
+        jButton6.setIcon(new ColorCell(new Color(255,127,39), 23, 23, 3));
+        jButton7.setIcon(new ColorCell(new Color(255,242,0), 23, 23, 3));
+        jButton8.setIcon(new ColorCell(new Color(34,177,76), 23, 23, 3));
+        jButton9.setIcon(new ColorCell(new Color(1,126,232), 23, 23, 3));
+        jButton10.setIcon(new ColorCell(new Color(63,72,204), 23, 23, 3));
+        jButton11.setIcon(new ColorCell(new Color(163,74,164), 23, 23, 3));
+        jButton12.setIcon(new ColorCell(new Color(255,255,255), 23, 23, 3));
+        jButton13.setIcon(new ColorCell(new Color(195,195,195), 23, 23, 3));
+        jButton14.setIcon(new ColorCell(new Color(185,122,87), 23, 23, 3));
+        jButton15.setIcon(new ColorCell(new Color(255,174,201), 23, 23, 3));
+        jButton16.setIcon(new ColorCell(new Color(255,201,14), 23, 23, 3));
+        jButton17.setIcon(new ColorCell(new Color(239,228,176), 23, 23, 3));
+        jButton18.setIcon(new ColorCell(new Color(181,230,29), 23, 23, 3));
+        jButton19.setIcon(new ColorCell(new Color(153,217,234), 23, 23, 3));
+        jButton20.setIcon(new ColorCell(new Color(112,146,190), 23, 23, 3));
+        jButton21.setIcon(new ColorCell(new Color(200,191,231), 23, 23, 3));
+        jButton22.setIcon(new ColorCell(new Color(250,250,250), 23, 23, 3));
+        jButton23.setIcon(new ColorCell(new Color(225,225,225), 23, 23, 3));
+        jButton24.setIcon(new ColorCell(new Color(200,200,200), 23, 23, 3));
+        jButton25.setIcon(new ColorCell(new Color(175,175,175), 23, 23, 3));
+        jButton26.setIcon(new ColorCell(new Color(150,150,150), 23, 23, 3));
+        jButton27.setIcon(new ColorCell(new Color(125,125,125), 23, 23, 3));
+        jButton28.setIcon(new ColorCell(new Color(100,100,100), 23, 23, 3));
+        jButton29.setIcon(new ColorCell(new Color(75,75,75), 23, 23, 3));
+        jButton30.setIcon(new ColorCell(new Color(50,50,50), 23, 23, 3));
+        jButton31.setIcon(new ColorCell(new Color(25,25,25), 23, 23, 3));
+        
     }
     
     public void colorButton(Color color){
         if(bColor1.isSelected()){
             strokeColor = color;
-            color1Icon = new ColorCell(color);
+            color1Icon = new ColorCell(color, 53, 53, 5);
             bColor1.setIcon(color1Icon);
         }
         else if(bColor2.isSelected()){
             fillColor = color;
-            color2Icon = new ColorCell(color);
+            color2Icon = new ColorCell(color, 53, 53, 5);
             bColor2.setIcon(color2Icon);
         }
     }
@@ -123,240 +154,211 @@ public class ColorChooser extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Color 2");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[0,0,0].png"))); // NOI18N
-        jButton2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton2.setAlignmentY(0.0F);
+        jButton2.setBorder(null);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton2MousePressed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[127,127,127].png"))); // NOI18N
-        jButton3.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton3.setBorder(null);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton3MousePressed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[136,0,21].png"))); // NOI18N
-        jButton4.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton4.setBorder(null);
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton4MousePressed(evt);
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[237,28,36].png"))); // NOI18N
-        jButton5.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton5.setBorder(null);
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton5MousePressed(evt);
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[255,127,39].png"))); // NOI18N
-        jButton6.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton6.setBorder(null);
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton6MousePressed(evt);
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[255,242,0].png"))); // NOI18N
-        jButton7.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton7.setBorder(null);
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton7MousePressed(evt);
             }
         });
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[34,177,76].png"))); // NOI18N
-        jButton8.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton8.setBorder(null);
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton8MousePressed(evt);
             }
         });
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[0,162,232].png"))); // NOI18N
-        jButton9.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton9.setBorder(null);
         jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton9MousePressed(evt);
             }
         });
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[63,72,204].png"))); // NOI18N
-        jButton10.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton10.setBorder(null);
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton10MousePressed(evt);
             }
         });
 
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[163,73,164].png"))); // NOI18N
-        jButton11.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton11.setBorder(null);
         jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton11MousePressed(evt);
             }
         });
 
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[255,255,255].png"))); // NOI18N
-        jButton12.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+        jButton12.setBorder(null);
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton12MousePressed(evt);
             }
         });
 
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[195,195,195].png"))); // NOI18N
-        jButton13.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton13.setBorder(null);
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton13MousePressed(evt);
             }
         });
 
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[185,122,87].png"))); // NOI18N
-        jButton14.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton14.setBorder(null);
         jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton14MousePressed(evt);
             }
         });
 
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[255,174,201].png"))); // NOI18N
-        jButton15.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton15.setBorder(null);
         jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton15MousePressed(evt);
             }
         });
 
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[255,201,14].png"))); // NOI18N
-        jButton16.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton16.setBorder(null);
         jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton16MousePressed(evt);
             }
         });
 
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[239,228,176].png"))); // NOI18N
-        jButton17.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton17.setBorder(null);
         jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton17MousePressed(evt);
             }
         });
 
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[181,230,29].png"))); // NOI18N
-        jButton18.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton18.setBorder(null);
         jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton18MousePressed(evt);
             }
         });
 
-        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[153,217,234].png"))); // NOI18N
-        jButton19.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton19.setBorder(null);
         jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton19MousePressed(evt);
             }
         });
 
-        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[112,146,190].png"))); // NOI18N
-        jButton20.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton20.setBorder(null);
         jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton20MousePressed(evt);
             }
         });
 
-        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[200,191,231].png"))); // NOI18N
-        jButton21.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton21.setBorder(null);
         jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton21MousePressed(evt);
             }
         });
 
-        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[250,250,250].png"))); // NOI18N
-        jButton22.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton22.setBorder(null);
         jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton22MousePressed(evt);
             }
         });
 
-        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[225,225,225].png"))); // NOI18N
-        jButton23.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton23.setBorder(null);
         jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton23MousePressed(evt);
             }
         });
 
-        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[200,200,200].png"))); // NOI18N
-        jButton24.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton24.setBorder(null);
         jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton24MousePressed(evt);
             }
         });
 
-        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[175,175,175].png"))); // NOI18N
-        jButton25.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton25.setBorder(null);
         jButton25.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton25MousePressed(evt);
             }
         });
 
-        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[150,150,150].png"))); // NOI18N
-        jButton26.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton26.setBorder(null);
         jButton26.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton26MousePressed(evt);
             }
         });
 
-        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[125,125,125].png"))); // NOI18N
-        jButton27.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton27.setBorder(null);
         jButton27.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton27MousePressed(evt);
             }
         });
 
-        jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[100,100,100].png"))); // NOI18N
-        jButton28.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton28.setBorder(null);
         jButton28.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton28MousePressed(evt);
             }
         });
 
-        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[75,75,75].png"))); // NOI18N
-        jButton29.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton29.setBorder(null);
         jButton29.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton29MousePressed(evt);
             }
         });
 
-        jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[50,50,50].png"))); // NOI18N
-        jButton30.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton30.setBorder(null);
         jButton30.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton30MousePressed(evt);
             }
         });
 
-        jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/[25,25,25].png"))); // NOI18N
-        jButton31.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+        jButton31.setBorder(null);
         jButton31.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton31MousePressed(evt);
@@ -626,10 +628,10 @@ public class ColorChooser extends javax.swing.JPanel {
         colorButton(new Color(25,25,25));
     }//GEN-LAST:event_jButton31MousePressed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void jButton12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MousePressed
         // TODO add your handling code here:
         colorButton(new Color(255,255,255));
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_jButton12MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

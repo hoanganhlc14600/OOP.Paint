@@ -9,6 +9,7 @@ import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -52,6 +53,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         paintPanel.setTextPanel(textPanel1);
         paintPanel.setColorChooser(colorChooser1);
         paintPanel.setIsFill(isFill);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagebutton/hust.png")));
     }
     
     
@@ -285,6 +287,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BKPaint");
         setBackground(new java.awt.Color(255, 51, 102));
         setName("MainFrame"); // NOI18N
 
@@ -519,7 +522,6 @@ public class Main extends javax.swing.JFrame implements ActionListener{
 
         isFill.setBackground(new java.awt.Color(245, 245, 245));
         isFill.setForeground(new java.awt.Color(153, 153, 153));
-        isFill.setSelected(true);
         isFill.setText("Fill");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1128,8 +1130,8 @@ public class Main extends javax.swing.JFrame implements ActionListener{
     private void jRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRecordActionPerformed
         // TODO add your handling code here:
         paintPanel.ChangeTool();
-        paintPanel.getUndo().push(paintPanel.getImage());
-        replayDialog = new ReplayDialog(this, true,paintPanel.getUndo());
+        paintPanel.getReplay().push(paintPanel.getImage());
+        replayDialog = new ReplayDialog(this, true,paintPanel.getReplay());
     }//GEN-LAST:event_jRecordActionPerformed
 
     @Override

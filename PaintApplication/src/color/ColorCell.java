@@ -14,12 +14,16 @@ import java.awt.Graphics;
  * @author Đại
  */
 public class ColorCell extends ImageIcon{
-    public static int WIDTH = 43;
-    public static int HEIGHT = 43;
+    private int width;
+    private int height;
+    private int align;
     private Color color = Color.WHITE; 
 
-    public ColorCell(Color color) {
+    public ColorCell(Color color, int width, int height, int align) {
         this.color = color;
+        this.width = width;
+        this.height = height;
+        this.align = align;
     }
 
     public Color getColor() {
@@ -33,7 +37,7 @@ public class ColorCell extends ImageIcon{
     @Override
     public void paintIcon(Component c, Graphics g, int x, int y) {
         g.setColor(color);
-        g.fillRect(5, 5, WIDTH, HEIGHT);
+        g.fillRect(align, align, width - 2*align, height - 2*align);
     }
     
 }

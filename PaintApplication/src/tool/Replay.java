@@ -43,6 +43,18 @@ public class Replay extends JPanel implements Runnable {
         g2.fillRect(0, 0, buff_img.getWidth(), buff_img.getHeight());
         g2.dispose();
     }
+
+    public int getCurrentImage() {
+        return currentImage;
+    }
+
+    public void setCurrentImage(int currentImage) {
+        this.currentImage = currentImage;
+    }
+    
+    public int getTop() {
+        return stack.getTop();
+    }
     
     public Stack getStack(){
         return stack;
@@ -99,6 +111,7 @@ public class Replay extends JPanel implements Runnable {
         }
         System.gc();
         isPlaying = false;
+        if (currentImage > stack.getTop()) currentImage = 0;
         thread = null;
     }
     /**
