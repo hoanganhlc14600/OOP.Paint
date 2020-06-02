@@ -167,8 +167,12 @@ public class ReplayDialog extends javax.swing.JDialog {
         int i = replay.getCurrentImage() - 4;
         if (i < 0) {
             replay.setCurrentImage(0);
+            replay.setImage(replay.getStack().getImageIndex(0));
+            replay.repaint();
         } else {
             replay.setCurrentImage(i);
+            replay.setImage(replay.getStack().getImageIndex(i));
+            replay.repaint();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -177,8 +181,12 @@ public class ReplayDialog extends javax.swing.JDialog {
         int i = replay.getCurrentImage() + 4;
         if (i > replay.getTop()) {
             replay.setCurrentImage(replay.getTop());
+            replay.setImage(replay.getStack().getImageIndex(replay.getTop()));
+            replay.repaint();
         } else {
             replay.setCurrentImage(i);
+            replay.setImage(replay.getStack().getImageIndex(i));
+            replay.repaint();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

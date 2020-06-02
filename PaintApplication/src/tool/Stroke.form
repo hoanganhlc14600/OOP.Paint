@@ -84,6 +84,7 @@
             <StringItem index="9" value="10"/>
           </StringArray>
         </Property>
+        <Property name="selectedIndex" type="int" value="1"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox2ItemStateChanged"/>

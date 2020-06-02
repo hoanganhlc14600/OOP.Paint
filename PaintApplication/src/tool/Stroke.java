@@ -23,7 +23,7 @@ import javax.swing.ListCellRenderer;
  * @author Tuan Hien + Hoang Anh
  */
 public class Stroke extends javax.swing.JPanel {
-    private float strokeWidth = 1f; // kich thuoc net ve mac dinh
+    private float strokeWidth = 2f; // kich thuoc net ve mac dinh
     private BasicStroke stroke = new BasicStroke(strokeWidth);
     private float[] dash;
     
@@ -95,6 +95,7 @@ public class Stroke extends javax.swing.JPanel {
         });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jComboBox2.setSelectedIndex(1);
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox2ItemStateChanged(evt);
