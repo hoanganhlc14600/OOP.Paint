@@ -32,9 +32,9 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jToggleButton5" linkSize="1" min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jComboBox1" max="32767" attributes="0"/>
+                  <Component id="jComboBox1" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jToggleButton1" linkSize="3" max="32767" attributes="0"/>
                   <Component id="jToggleButton3" linkSize="3" max="32767" attributes="0"/>
@@ -82,17 +82,427 @@
           <Font name="Arial" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="414">
+            <StringItem index="0" value="Agency FB"/>
+            <StringItem index="1" value="Agency FB Bold"/>
+            <StringItem index="2" value="Algerian"/>
+            <StringItem index="3" value="Arial"/>
+            <StringItem index="4" value="Arial Black"/>
+            <StringItem index="5" value="Arial Bold"/>
+            <StringItem index="6" value="Arial Bold Italic"/>
+            <StringItem index="7" value="Arial Italic"/>
+            <StringItem index="8" value="Arial Narrow"/>
+            <StringItem index="9" value="Arial Narrow Bold"/>
+            <StringItem index="10" value="Arial Narrow Bold Italic"/>
+            <StringItem index="11" value="Arial Narrow Italic"/>
+            <StringItem index="12" value="Arial Rounded MT Bold"/>
+            <StringItem index="13" value="Bahnschrift Bold"/>
+            <StringItem index="14" value="Bahnschrift Bold Condensed"/>
+            <StringItem index="15" value="Bahnschrift Bold SemiCondensed"/>
+            <StringItem index="16" value="Bahnschrift Condensed"/>
+            <StringItem index="17" value="Bahnschrift Light"/>
+            <StringItem index="18" value="Bahnschrift Light Condensed"/>
+            <StringItem index="19" value="Bahnschrift Light SemiCondensed"/>
+            <StringItem index="20" value="Bahnschrift Regular"/>
+            <StringItem index="21" value="Bahnschrift SemiBold"/>
+            <StringItem index="22" value="Bahnschrift SemiBold Condensed"/>
+            <StringItem index="23" value="Bahnschrift SemiBold SemiCondensed"/>
+            <StringItem index="24" value="Bahnschrift SemiCondensed"/>
+            <StringItem index="25" value="Bahnschrift SemiLight"/>
+            <StringItem index="26" value="Bahnschrift SemiLight Condensed"/>
+            <StringItem index="27" value="Bahnschrift SemiLight SemiCondensed"/>
+            <StringItem index="28" value="Baskerville Old Face"/>
+            <StringItem index="29" value="Bauhaus 93"/>
+            <StringItem index="30" value="Bell MT"/>
+            <StringItem index="31" value="Bell MT Bold"/>
+            <StringItem index="32" value="Bell MT Italic"/>
+            <StringItem index="33" value="Berlin Sans FB"/>
+            <StringItem index="34" value="Berlin Sans FB Bold"/>
+            <StringItem index="35" value="Berlin Sans FB Demi Bold"/>
+            <StringItem index="36" value="Bernard MT Condensed"/>
+            <StringItem index="37" value="Blackadder ITC"/>
+            <StringItem index="38" value="Bodoni MT"/>
+            <StringItem index="39" value="Bodoni MT Black"/>
+            <StringItem index="40" value="Bodoni MT Black Italic"/>
+            <StringItem index="41" value="Bodoni MT Bold"/>
+            <StringItem index="42" value="Bodoni MT Bold Italic"/>
+            <StringItem index="43" value="Bodoni MT Condensed"/>
+            <StringItem index="44" value="Bodoni MT Condensed Bold"/>
+            <StringItem index="45" value="Bodoni MT Condensed Bold Italic"/>
+            <StringItem index="46" value="Bodoni MT Condensed Italic"/>
+            <StringItem index="47" value="Bodoni MT Italic"/>
+            <StringItem index="48" value="Bodoni MT Poster Compressed"/>
+            <StringItem index="49" value="Book Antiqua"/>
+            <StringItem index="50" value="Book Antiqua Bold"/>
+            <StringItem index="51" value="Book Antiqua Bold Italic"/>
+            <StringItem index="52" value="Book Antiqua Italic"/>
+            <StringItem index="53" value="Bookman Old Style"/>
+            <StringItem index="54" value="Bookman Old Style Bold"/>
+            <StringItem index="55" value="Bookman Old Style Bold Italic"/>
+            <StringItem index="56" value="Bookman Old Style Italic"/>
+            <StringItem index="57" value="Bookshelf Symbol 7"/>
+            <StringItem index="58" value="Bradley Hand ITC"/>
+            <StringItem index="59" value="Britannic Bold"/>
+            <StringItem index="60" value="Broadway"/>
+            <StringItem index="61" value="Brush Script MT Italic"/>
+            <StringItem index="62" value="Calibri"/>
+            <StringItem index="63" value="Calibri Bold"/>
+            <StringItem index="64" value="Calibri Bold Italic"/>
+            <StringItem index="65" value="Calibri Italic"/>
+            <StringItem index="66" value="Calibri Light"/>
+            <StringItem index="67" value="Calibri Light Italic"/>
+            <StringItem index="68" value="Californian FB"/>
+            <StringItem index="69" value="Californian FB Bold"/>
+            <StringItem index="70" value="Californian FB Italic"/>
+            <StringItem index="71" value="Calisto MT"/>
+            <StringItem index="72" value="Calisto MT Bold"/>
+            <StringItem index="73" value="Calisto MT Bold Italic"/>
+            <StringItem index="74" value="Calisto MT Italic"/>
+            <StringItem index="75" value="Cambria"/>
+            <StringItem index="76" value="Cambria Bold"/>
+            <StringItem index="77" value="Cambria Bold Italic"/>
+            <StringItem index="78" value="Cambria Italic"/>
+            <StringItem index="79" value="Cambria Math"/>
+            <StringItem index="80" value="Candara"/>
+            <StringItem index="81" value="Candara Bold"/>
+            <StringItem index="82" value="Candara Bold Italic"/>
+            <StringItem index="83" value="Candara Italic"/>
+            <StringItem index="84" value="Candara Light"/>
+            <StringItem index="85" value="Candara Light Italic"/>
+            <StringItem index="86" value="Castellar"/>
+            <StringItem index="87" value="Centaur"/>
+            <StringItem index="88" value="Century"/>
+            <StringItem index="89" value="Century Gothic"/>
+            <StringItem index="90" value="Century Gothic Bold"/>
+            <StringItem index="91" value="Century Gothic Bold Italic"/>
+            <StringItem index="92" value="Century Gothic Italic"/>
+            <StringItem index="93" value="Century Schoolbook"/>
+            <StringItem index="94" value="Century Schoolbook Bold"/>
+            <StringItem index="95" value="Century Schoolbook Bold Italic"/>
+            <StringItem index="96" value="Century Schoolbook Italic"/>
+            <StringItem index="97" value="Chiller"/>
+            <StringItem index="98" value="Colonna MT"/>
+            <StringItem index="99" value="Comic Sans MS"/>
+            <StringItem index="100" value="Comic Sans MS Bold"/>
+            <StringItem index="101" value="Comic Sans MS Bold Italic"/>
+            <StringItem index="102" value="Comic Sans MS Italic"/>
+            <StringItem index="103" value="Consolas"/>
+            <StringItem index="104" value="Consolas Bold"/>
+            <StringItem index="105" value="Consolas Bold Italic"/>
+            <StringItem index="106" value="Consolas Italic"/>
+            <StringItem index="107" value="Constantia"/>
+            <StringItem index="108" value="Constantia Bold"/>
+            <StringItem index="109" value="Constantia Bold Italic"/>
+            <StringItem index="110" value="Constantia Italic"/>
+            <StringItem index="111" value="Cooper Black"/>
+            <StringItem index="112" value="Copperplate Gothic Bold"/>
+            <StringItem index="113" value="Copperplate Gothic Light"/>
+            <StringItem index="114" value="Corbel"/>
+            <StringItem index="115" value="Corbel Bold"/>
+            <StringItem index="116" value="Corbel Bold Italic"/>
+            <StringItem index="117" value="Corbel Italic"/>
+            <StringItem index="118" value="Corbel Light"/>
+            <StringItem index="119" value="Corbel Light Italic"/>
+            <StringItem index="120" value="Courier New"/>
+            <StringItem index="121" value="Courier New Bold"/>
+            <StringItem index="122" value="Courier New Bold Italic"/>
+            <StringItem index="123" value="Courier New Italic"/>
+            <StringItem index="124" value="Curlz MT"/>
+            <StringItem index="125" value="Dubai Bold"/>
+            <StringItem index="126" value="Dubai Light"/>
+            <StringItem index="127" value="Dubai Medium"/>
+            <StringItem index="128" value="Dubai Regular"/>
+            <StringItem index="129" value="Ebrima"/>
+            <StringItem index="130" value="Ebrima Bold"/>
+            <StringItem index="131" value="Edwardian Script ITC"/>
+            <StringItem index="132" value="Elephant"/>
+            <StringItem index="133" value="Elephant Italic"/>
+            <StringItem index="134" value="Engravers MT"/>
+            <StringItem index="135" value="Eras Bold ITC"/>
+            <StringItem index="136" value="Eras Demi ITC"/>
+            <StringItem index="137" value="Eras Light ITC"/>
+            <StringItem index="138" value="Eras Medium ITC"/>
+            <StringItem index="139" value="Felix Titling"/>
+            <StringItem index="140" value="Footlight MT Light"/>
+            <StringItem index="141" value="Forte"/>
+            <StringItem index="142" value="Franklin Gothic Book"/>
+            <StringItem index="143" value="Franklin Gothic Book Italic"/>
+            <StringItem index="144" value="Franklin Gothic Demi"/>
+            <StringItem index="145" value="Franklin Gothic Demi Cond"/>
+            <StringItem index="146" value="Franklin Gothic Demi Italic"/>
+            <StringItem index="147" value="Franklin Gothic Heavy"/>
+            <StringItem index="148" value="Franklin Gothic Heavy Italic"/>
+            <StringItem index="149" value="Franklin Gothic Medium"/>
+            <StringItem index="150" value="Franklin Gothic Medium Cond"/>
+            <StringItem index="151" value="Franklin Gothic Medium Italic"/>
+            <StringItem index="152" value="Freestyle Script"/>
+            <StringItem index="153" value="French Script MT"/>
+            <StringItem index="154" value="Gabriola"/>
+            <StringItem index="155" value="Gadugi"/>
+            <StringItem index="156" value="Gadugi Bold"/>
+            <StringItem index="157" value="Garamond"/>
+            <StringItem index="158" value="Garamond Bold"/>
+            <StringItem index="159" value="Garamond Italic"/>
+            <StringItem index="160" value="Georgia"/>
+            <StringItem index="161" value="Georgia Bold"/>
+            <StringItem index="162" value="Georgia Bold Italic"/>
+            <StringItem index="163" value="Georgia Italic"/>
+            <StringItem index="164" value="Gigi"/>
+            <StringItem index="165" value="Gill Sans MT"/>
+            <StringItem index="166" value="Gill Sans MT Bold"/>
+            <StringItem index="167" value="Gill Sans MT Bold Italic"/>
+            <StringItem index="168" value="Gill Sans MT Condensed"/>
+            <StringItem index="169" value="Gill Sans MT Ext Condensed Bold"/>
+            <StringItem index="170" value="Gill Sans MT Italic"/>
+            <StringItem index="171" value="Gill Sans Ultra Bold"/>
+            <StringItem index="172" value="Gill Sans Ultra Bold Condensed"/>
+            <StringItem index="173" value="Gloucester MT Extra Condensed"/>
+            <StringItem index="174" value="Goudy Old Style"/>
+            <StringItem index="175" value="Goudy Old Style Bold"/>
+            <StringItem index="176" value="Goudy Old Style Italic"/>
+            <StringItem index="177" value="Goudy Stout"/>
+            <StringItem index="178" value="Haettenschweiler"/>
+            <StringItem index="179" value="Harlow Solid Italic"/>
+            <StringItem index="180" value="Harrington"/>
+            <StringItem index="181" value="High Tower Text"/>
+            <StringItem index="182" value="High Tower Text Italic"/>
+            <StringItem index="183" value="HoloLens MDL2 Assets"/>
+            <StringItem index="184" value="Impact"/>
+            <StringItem index="185" value="Imprint MT Shadow"/>
+            <StringItem index="186" value="Informal Roman"/>
+            <StringItem index="187" value="Ink Free"/>
+            <StringItem index="188" value="Javanese Text"/>
+            <StringItem index="189" value="Jokerman"/>
+            <StringItem index="190" value="Juice ITC"/>
+            <StringItem index="191" value="Kristen ITC"/>
+            <StringItem index="192" value="Kunstler Script"/>
+            <StringItem index="193" value="Leelawadee"/>
+            <StringItem index="194" value="Leelawadee Bold"/>
+            <StringItem index="195" value="Leelawadee UI"/>
+            <StringItem index="196" value="Leelawadee UI Bold"/>
+            <StringItem index="197" value="Leelawadee UI Semilight"/>
+            <StringItem index="198" value="Lucida Bright"/>
+            <StringItem index="199" value="Lucida Bright Demibold"/>
+            <StringItem index="200" value="Lucida Bright Demibold"/>
+            <StringItem index="201" value="Lucida Bright Demibold Italic"/>
+            <StringItem index="202" value="Lucida Bright Demibold Italic"/>
+            <StringItem index="203" value="Lucida Bright Italic"/>
+            <StringItem index="204" value="Lucida Bright Italic"/>
+            <StringItem index="205" value="Lucida Bright Regular"/>
+            <StringItem index="206" value="Lucida Calligraphy Italic"/>
+            <StringItem index="207" value="Lucida Console"/>
+            <StringItem index="208" value="Lucida Fax Demibold"/>
+            <StringItem index="209" value="Lucida Fax Demibold Italic"/>
+            <StringItem index="210" value="Lucida Fax Italic"/>
+            <StringItem index="211" value="Lucida Fax Regular"/>
+            <StringItem index="212" value="Lucida Handwriting Italic"/>
+            <StringItem index="213" value="Lucida Sans Demibold"/>
+            <StringItem index="214" value="Lucida Sans Demibold Italic"/>
+            <StringItem index="215" value="Lucida Sans Demibold Roman"/>
+            <StringItem index="216" value="Lucida Sans Italic"/>
+            <StringItem index="217" value="Lucida Sans Regular"/>
+            <StringItem index="218" value="Lucida Sans Regular"/>
+            <StringItem index="219" value="Lucida Sans Typewriter Bold"/>
+            <StringItem index="220" value="Lucida Sans Typewriter Bold"/>
+            <StringItem index="221" value="Lucida Sans Typewriter Bold Oblique"/>
+            <StringItem index="222" value="Lucida Sans Typewriter Oblique"/>
+            <StringItem index="223" value="Lucida Sans Typewriter Regular"/>
+            <StringItem index="224" value="Lucida Sans Typewriter Regular"/>
+            <StringItem index="225" value="Lucida Sans Unicode"/>
+            <StringItem index="226" value="MS Gothic"/>
+            <StringItem index="227" value="MS Outlook"/>
+            <StringItem index="228" value="MS PGothic"/>
+            <StringItem index="229" value="MS Reference Sans Serif"/>
+            <StringItem index="230" value="MS Reference Specialty"/>
+            <StringItem index="231" value="MS UI Gothic"/>
+            <StringItem index="232" value="MT Extra"/>
+            <StringItem index="233" value="MV Boli"/>
+            <StringItem index="234" value="Magneto Bold"/>
+            <StringItem index="235" value="Maiandra GD"/>
+            <StringItem index="236" value="Malgun Gothic"/>
+            <StringItem index="237" value="Malgun Gothic Bold"/>
+            <StringItem index="238" value="Malgun Gothic Semilight"/>
+            <StringItem index="239" value="Marlett"/>
+            <StringItem index="240" value="Matura MT Script Capitals"/>
+            <StringItem index="241" value="Microsoft Himalaya"/>
+            <StringItem index="242" value="Microsoft JhengHei"/>
+            <StringItem index="243" value="Microsoft JhengHei Bold"/>
+            <StringItem index="244" value="Microsoft JhengHei Light"/>
+            <StringItem index="245" value="Microsoft JhengHei UI"/>
+            <StringItem index="246" value="Microsoft JhengHei UI Bold"/>
+            <StringItem index="247" value="Microsoft JhengHei UI Light"/>
+            <StringItem index="248" value="Microsoft New Tai Lue"/>
+            <StringItem index="249" value="Microsoft New Tai Lue Bold"/>
+            <StringItem index="250" value="Microsoft PhagsPa"/>
+            <StringItem index="251" value="Microsoft PhagsPa Bold"/>
+            <StringItem index="252" value="Microsoft Sans Serif"/>
+            <StringItem index="253" value="Microsoft Tai Le"/>
+            <StringItem index="254" value="Microsoft Tai Le Bold"/>
+            <StringItem index="255" value="Microsoft Uighur"/>
+            <StringItem index="256" value="Microsoft Uighur Bold"/>
+            <StringItem index="257" value="Microsoft YaHei"/>
+            <StringItem index="258" value="Microsoft YaHei Bold"/>
+            <StringItem index="259" value="Microsoft YaHei Light"/>
+            <StringItem index="260" value="Microsoft YaHei UI"/>
+            <StringItem index="261" value="Microsoft YaHei UI Bold"/>
+            <StringItem index="262" value="Microsoft YaHei UI Light"/>
+            <StringItem index="263" value="Microsoft Yi Baiti"/>
+            <StringItem index="264" value="MingLiU-ExtB"/>
+            <StringItem index="265" value="MingLiU_HKSCS-ExtB"/>
+            <StringItem index="266" value="Mistral"/>
+            <StringItem index="267" value="Modern No. 20"/>
+            <StringItem index="268" value="Mongolian Baiti"/>
+            <StringItem index="269" value="Monospaced Bold"/>
+            <StringItem index="270" value="Monospaced Bold Italic"/>
+            <StringItem index="271" value="Monospaced Italic"/>
+            <StringItem index="272" value="Monospaced Regular"/>
+            <StringItem index="273" value="Monotype Corsiva"/>
+            <StringItem index="274" value="Myanmar Text"/>
+            <StringItem index="275" value="Myanmar Text Bold"/>
+            <StringItem index="276" value="NSimSun"/>
+            <StringItem index="277" value="Niagara Engraved"/>
+            <StringItem index="278" value="Niagara Solid"/>
+            <StringItem index="279" value="Nirmala UI"/>
+            <StringItem index="280" value="Nirmala UI Bold"/>
+            <StringItem index="281" value="Nirmala UI Semilight"/>
+            <StringItem index="282" value="OCR A Extended"/>
+            <StringItem index="283" value="Old English Text MT"/>
+            <StringItem index="284" value="Onyx"/>
+            <StringItem index="285" value="PMingLiU-ExtB"/>
+            <StringItem index="286" value="Palace Script MT"/>
+            <StringItem index="287" value="Palatino Linotype"/>
+            <StringItem index="288" value="Palatino Linotype Bold"/>
+            <StringItem index="289" value="Palatino Linotype Bold Italic"/>
+            <StringItem index="290" value="Palatino Linotype Italic"/>
+            <StringItem index="291" value="Papyrus"/>
+            <StringItem index="292" value="Parchment"/>
+            <StringItem index="293" value="Perpetua"/>
+            <StringItem index="294" value="Perpetua Bold"/>
+            <StringItem index="295" value="Perpetua Bold Italic"/>
+            <StringItem index="296" value="Perpetua Italic"/>
+            <StringItem index="297" value="Perpetua Titling MT Bold"/>
+            <StringItem index="298" value="Perpetua Titling MT Light"/>
+            <StringItem index="299" value="Playbill"/>
+            <StringItem index="300" value="Poor Richard"/>
+            <StringItem index="301" value="Pristina"/>
+            <StringItem index="302" value="Rage Italic"/>
+            <StringItem index="303" value="Ravie"/>
+            <StringItem index="304" value="Rockwell"/>
+            <StringItem index="305" value="Rockwell Bold"/>
+            <StringItem index="306" value="Rockwell Bold Italic"/>
+            <StringItem index="307" value="Rockwell Condensed"/>
+            <StringItem index="308" value="Rockwell Condensed Bold"/>
+            <StringItem index="309" value="Rockwell Extra Bold"/>
+            <StringItem index="310" value="Rockwell Italic"/>
+            <StringItem index="311" value="SansSerif Bold"/>
+            <StringItem index="312" value="SansSerif Bold Italic"/>
+            <StringItem index="313" value="SansSerif Italic"/>
+            <StringItem index="314" value="SansSerif Regular"/>
+            <StringItem index="315" value="Script MT Bold"/>
+            <StringItem index="316" value="Segoe MDL2 Assets"/>
+            <StringItem index="317" value="Segoe Print"/>
+            <StringItem index="318" value="Segoe Print Bold"/>
+            <StringItem index="319" value="Segoe Script"/>
+            <StringItem index="320" value="Segoe Script Bold"/>
+            <StringItem index="321" value="Segoe UI"/>
+            <StringItem index="322" value="Segoe UI Black"/>
+            <StringItem index="323" value="Segoe UI Black Italic"/>
+            <StringItem index="324" value="Segoe UI Bold"/>
+            <StringItem index="325" value="Segoe UI Bold Italic"/>
+            <StringItem index="326" value="Segoe UI Emoji"/>
+            <StringItem index="327" value="Segoe UI Historic"/>
+            <StringItem index="328" value="Segoe UI Italic"/>
+            <StringItem index="329" value="Segoe UI Light"/>
+            <StringItem index="330" value="Segoe UI Light Italic"/>
+            <StringItem index="331" value="Segoe UI Semibold"/>
+            <StringItem index="332" value="Segoe UI Semibold Italic"/>
+            <StringItem index="333" value="Segoe UI Semilight"/>
+            <StringItem index="334" value="Segoe UI Semilight Italic"/>
+            <StringItem index="335" value="Segoe UI Symbol"/>
+            <StringItem index="336" value="Serif Bold"/>
+            <StringItem index="337" value="Serif Bold Italic"/>
+            <StringItem index="338" value="Serif Italic"/>
+            <StringItem index="339" value="Serif Regular"/>
+            <StringItem index="340" value="Showcard Gothic"/>
+            <StringItem index="341" value="SimSun"/>
+            <StringItem index="342" value="SimSun-ExtB"/>
+            <StringItem index="343" value="Sitka Banner"/>
+            <StringItem index="344" value="Sitka Banner Bold"/>
+            <StringItem index="345" value="Sitka Banner Bold Italic"/>
+            <StringItem index="346" value="Sitka Banner Italic"/>
+            <StringItem index="347" value="Sitka Display"/>
+            <StringItem index="348" value="Sitka Display Bold"/>
+            <StringItem index="349" value="Sitka Display Bold Italic"/>
+            <StringItem index="350" value="Sitka Display Italic"/>
+            <StringItem index="351" value="Sitka Heading"/>
+            <StringItem index="352" value="Sitka Heading Bold"/>
+            <StringItem index="353" value="Sitka Heading Bold Italic"/>
+            <StringItem index="354" value="Sitka Heading Italic"/>
+            <StringItem index="355" value="Sitka Small"/>
+            <StringItem index="356" value="Sitka Small Bold"/>
+            <StringItem index="357" value="Sitka Small Bold Italic"/>
+            <StringItem index="358" value="Sitka Small Italic"/>
+            <StringItem index="359" value="Sitka Subheading"/>
+            <StringItem index="360" value="Sitka Subheading Bold"/>
+            <StringItem index="361" value="Sitka Subheading Bold Italic"/>
+            <StringItem index="362" value="Sitka Subheading Italic"/>
+            <StringItem index="363" value="Sitka Text"/>
+            <StringItem index="364" value="Sitka Text Bold"/>
+            <StringItem index="365" value="Sitka Text Bold Italic"/>
+            <StringItem index="366" value="Sitka Text Italic"/>
+            <StringItem index="367" value="Snap ITC"/>
+            <StringItem index="368" value="Stencil"/>
+            <StringItem index="369" value="Sylfaen"/>
+            <StringItem index="370" value="Symbol"/>
+            <StringItem index="371" value="System Bold"/>
+            <StringItem index="372" value="System Bold Italic"/>
+            <StringItem index="373" value="System Italic"/>
+            <StringItem index="374" value="System Regular"/>
+            <StringItem index="375" value="Tahoma"/>
+            <StringItem index="376" value="Tahoma Bold"/>
+            <StringItem index="377" value="Tempus Sans ITC"/>
+            <StringItem index="378" value="Times New Roman"/>
+            <StringItem index="379" value="Times New Roman Bold"/>
+            <StringItem index="380" value="Times New Roman Bold Italic"/>
+            <StringItem index="381" value="Times New Roman Italic"/>
+            <StringItem index="382" value="Trebuchet MS"/>
+            <StringItem index="383" value="Trebuchet MS Bold"/>
+            <StringItem index="384" value="Trebuchet MS Bold Italic"/>
+            <StringItem index="385" value="Trebuchet MS Italic"/>
+            <StringItem index="386" value="Tw Cen MT"/>
+            <StringItem index="387" value="Tw Cen MT Bold"/>
+            <StringItem index="388" value="Tw Cen MT Bold Italic"/>
+            <StringItem index="389" value="Tw Cen MT Condensed"/>
+            <StringItem index="390" value="Tw Cen MT Condensed Bold"/>
+            <StringItem index="391" value="Tw Cen MT Condensed Extra Bold"/>
+            <StringItem index="392" value="Tw Cen MT Italic"/>
+            <StringItem index="393" value="Verdana"/>
+            <StringItem index="394" value="Verdana Bold"/>
+            <StringItem index="395" value="Verdana Bold Italic"/>
+            <StringItem index="396" value="Verdana Italic"/>
+            <StringItem index="397" value="Viner Hand ITC"/>
+            <StringItem index="398" value="Vivaldi Italic"/>
+            <StringItem index="399" value="Vladimir Script"/>
+            <StringItem index="400" value="Webdings"/>
+            <StringItem index="401" value="Wide Latin"/>
+            <StringItem index="402" value="Wingdings"/>
+            <StringItem index="403" value="Wingdings 2"/>
+            <StringItem index="404" value="Wingdings 3"/>
+            <StringItem index="405" value="Yu Gothic Bold"/>
+            <StringItem index="406" value="Yu Gothic Light"/>
+            <StringItem index="407" value="Yu Gothic Medium"/>
+            <StringItem index="408" value="Yu Gothic Regular"/>
+            <StringItem index="409" value="Yu Gothic UI Bold"/>
+            <StringItem index="410" value="Yu Gothic UI Light"/>
+            <StringItem index="411" value="Yu Gothic UI Regular"/>
+            <StringItem index="412" value="Yu Gothic UI Semibold"/>
+            <StringItem index="413" value="Yu Gothic UI Semilight"/>
           </StringArray>
         </Property>
+        <Property name="selectedIndex" type="int" value="3"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox1ItemStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -129,7 +539,6 @@
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox2ItemStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox2ActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -157,6 +566,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagebutton/transparency.png"/>
         </Property>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Transparent"/>
       </Properties>
       <Events>
@@ -182,7 +592,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagebutton/opaque.png"/>
         </Property>
-        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Opaque"/>
         <Property name="alignmentY" type="float" value="0.0"/>
       </Properties>

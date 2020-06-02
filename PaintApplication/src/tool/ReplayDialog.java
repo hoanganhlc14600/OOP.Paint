@@ -5,6 +5,7 @@
  */
 package tool;
 
+
 /**
  *
  * @author Tuan Hien
@@ -45,7 +46,7 @@ public class ReplayDialog extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Replay");
+        setTitle("Replay Dialog");
         setAlwaysOnTop(true);
         setResizable(false);
 

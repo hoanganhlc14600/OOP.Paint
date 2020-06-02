@@ -100,15 +100,11 @@ public class TextPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agency FB", "Agency FB Bold", "Algerian", "Arial", "Arial Black", "Arial Bold", "Arial Bold Italic", "Arial Italic", "Arial Narrow", "Arial Narrow Bold", "Arial Narrow Bold Italic", "Arial Narrow Italic", "Arial Rounded MT Bold", "Bahnschrift Bold", "Bahnschrift Bold Condensed", "Bahnschrift Bold SemiCondensed", "Bahnschrift Condensed", "Bahnschrift Light", "Bahnschrift Light Condensed", "Bahnschrift Light SemiCondensed", "Bahnschrift Regular", "Bahnschrift SemiBold", "Bahnschrift SemiBold Condensed", "Bahnschrift SemiBold SemiCondensed", "Bahnschrift SemiCondensed", "Bahnschrift SemiLight", "Bahnschrift SemiLight Condensed", "Bahnschrift SemiLight SemiCondensed", "Baskerville Old Face", "Bauhaus 93", "Bell MT", "Bell MT Bold", "Bell MT Italic", "Berlin Sans FB", "Berlin Sans FB Bold", "Berlin Sans FB Demi Bold", "Bernard MT Condensed", "Blackadder ITC", "Bodoni MT", "Bodoni MT Black", "Bodoni MT Black Italic", "Bodoni MT Bold", "Bodoni MT Bold Italic", "Bodoni MT Condensed", "Bodoni MT Condensed Bold", "Bodoni MT Condensed Bold Italic", "Bodoni MT Condensed Italic", "Bodoni MT Italic", "Bodoni MT Poster Compressed", "Book Antiqua", "Book Antiqua Bold", "Book Antiqua Bold Italic", "Book Antiqua Italic", "Bookman Old Style", "Bookman Old Style Bold", "Bookman Old Style Bold Italic", "Bookman Old Style Italic", "Bookshelf Symbol 7", "Bradley Hand ITC", "Britannic Bold", "Broadway", "Brush Script MT Italic", "Calibri", "Calibri Bold", "Calibri Bold Italic", "Calibri Italic", "Calibri Light", "Calibri Light Italic", "Californian FB", "Californian FB Bold", "Californian FB Italic", "Calisto MT", "Calisto MT Bold", "Calisto MT Bold Italic", "Calisto MT Italic", "Cambria", "Cambria Bold", "Cambria Bold Italic", "Cambria Italic", "Cambria Math", "Candara", "Candara Bold", "Candara Bold Italic", "Candara Italic", "Candara Light", "Candara Light Italic", "Castellar", "Centaur", "Century", "Century Gothic", "Century Gothic Bold", "Century Gothic Bold Italic", "Century Gothic Italic", "Century Schoolbook", "Century Schoolbook Bold", "Century Schoolbook Bold Italic", "Century Schoolbook Italic", "Chiller", "Colonna MT", "Comic Sans MS", "Comic Sans MS Bold", "Comic Sans MS Bold Italic", "Comic Sans MS Italic", "Consolas", "Consolas Bold", "Consolas Bold Italic", "Consolas Italic", "Constantia", "Constantia Bold", "Constantia Bold Italic", "Constantia Italic", "Cooper Black", "Copperplate Gothic Bold", "Copperplate Gothic Light", "Corbel", "Corbel Bold", "Corbel Bold Italic", "Corbel Italic", "Corbel Light", "Corbel Light Italic", "Courier New", "Courier New Bold", "Courier New Bold Italic", "Courier New Italic", "Curlz MT", "Dubai Bold", "Dubai Light", "Dubai Medium", "Dubai Regular", "Ebrima", "Ebrima Bold", "Edwardian Script ITC", "Elephant", "Elephant Italic", "Engravers MT", "Eras Bold ITC", "Eras Demi ITC", "Eras Light ITC", "Eras Medium ITC", "Felix Titling", "Footlight MT Light", "Forte", "Franklin Gothic Book", "Franklin Gothic Book Italic", "Franklin Gothic Demi", "Franklin Gothic Demi Cond", "Franklin Gothic Demi Italic", "Franklin Gothic Heavy", "Franklin Gothic Heavy Italic", "Franklin Gothic Medium", "Franklin Gothic Medium Cond", "Franklin Gothic Medium Italic", "Freestyle Script", "French Script MT", "Gabriola", "Gadugi", "Gadugi Bold", "Garamond", "Garamond Bold", "Garamond Italic", "Georgia", "Georgia Bold", "Georgia Bold Italic", "Georgia Italic", "Gigi", "Gill Sans MT", "Gill Sans MT Bold", "Gill Sans MT Bold Italic", "Gill Sans MT Condensed", "Gill Sans MT Ext Condensed Bold", "Gill Sans MT Italic", "Gill Sans Ultra Bold", "Gill Sans Ultra Bold Condensed", "Gloucester MT Extra Condensed", "Goudy Old Style", "Goudy Old Style Bold", "Goudy Old Style Italic", "Goudy Stout", "Haettenschweiler", "Harlow Solid Italic", "Harrington", "High Tower Text", "High Tower Text Italic", "HoloLens MDL2 Assets", "Impact", "Imprint MT Shadow", "Informal Roman", "Ink Free", "Javanese Text", "Jokerman", "Juice ITC", "Kristen ITC", "Kunstler Script", "Leelawadee", "Leelawadee Bold", "Leelawadee UI", "Leelawadee UI Bold", "Leelawadee UI Semilight", "Lucida Bright", "Lucida Bright Demibold", "Lucida Bright Demibold", "Lucida Bright Demibold Italic", "Lucida Bright Demibold Italic", "Lucida Bright Italic", "Lucida Bright Italic", "Lucida Bright Regular", "Lucida Calligraphy Italic", "Lucida Console", "Lucida Fax Demibold", "Lucida Fax Demibold Italic", "Lucida Fax Italic", "Lucida Fax Regular", "Lucida Handwriting Italic", "Lucida Sans Demibold", "Lucida Sans Demibold Italic", "Lucida Sans Demibold Roman", "Lucida Sans Italic", "Lucida Sans Regular", "Lucida Sans Regular", "Lucida Sans Typewriter Bold", "Lucida Sans Typewriter Bold", "Lucida Sans Typewriter Bold Oblique", "Lucida Sans Typewriter Oblique", "Lucida Sans Typewriter Regular", "Lucida Sans Typewriter Regular", "Lucida Sans Unicode", "MS Gothic", "MS Outlook", "MS PGothic", "MS Reference Sans Serif", "MS Reference Specialty", "MS UI Gothic", "MT Extra", "MV Boli", "Magneto Bold", "Maiandra GD", "Malgun Gothic", "Malgun Gothic Bold", "Malgun Gothic Semilight", "Marlett", "Matura MT Script Capitals", "Microsoft Himalaya", "Microsoft JhengHei", "Microsoft JhengHei Bold", "Microsoft JhengHei Light", "Microsoft JhengHei UI", "Microsoft JhengHei UI Bold", "Microsoft JhengHei UI Light", "Microsoft New Tai Lue", "Microsoft New Tai Lue Bold", "Microsoft PhagsPa", "Microsoft PhagsPa Bold", "Microsoft Sans Serif", "Microsoft Tai Le", "Microsoft Tai Le Bold", "Microsoft Uighur", "Microsoft Uighur Bold", "Microsoft YaHei", "Microsoft YaHei Bold", "Microsoft YaHei Light", "Microsoft YaHei UI", "Microsoft YaHei UI Bold", "Microsoft YaHei UI Light", "Microsoft Yi Baiti", "MingLiU-ExtB", "MingLiU_HKSCS-ExtB", "Mistral", "Modern No. 20", "Mongolian Baiti", "Monospaced Bold", "Monospaced Bold Italic", "Monospaced Italic", "Monospaced Regular", "Monotype Corsiva", "Myanmar Text", "Myanmar Text Bold", "NSimSun", "Niagara Engraved", "Niagara Solid", "Nirmala UI", "Nirmala UI Bold", "Nirmala UI Semilight", "OCR A Extended", "Old English Text MT", "Onyx", "PMingLiU-ExtB", "Palace Script MT", "Palatino Linotype", "Palatino Linotype Bold", "Palatino Linotype Bold Italic", "Palatino Linotype Italic", "Papyrus", "Parchment", "Perpetua", "Perpetua Bold", "Perpetua Bold Italic", "Perpetua Italic", "Perpetua Titling MT Bold", "Perpetua Titling MT Light", "Playbill", "Poor Richard", "Pristina", "Rage Italic", "Ravie", "Rockwell", "Rockwell Bold", "Rockwell Bold Italic", "Rockwell Condensed", "Rockwell Condensed Bold", "Rockwell Extra Bold", "Rockwell Italic", "SansSerif Bold", "SansSerif Bold Italic", "SansSerif Italic", "SansSerif Regular", "Script MT Bold", "Segoe MDL2 Assets", "Segoe Print", "Segoe Print Bold", "Segoe Script", "Segoe Script Bold", "Segoe UI", "Segoe UI Black", "Segoe UI Black Italic", "Segoe UI Bold", "Segoe UI Bold Italic", "Segoe UI Emoji", "Segoe UI Historic", "Segoe UI Italic", "Segoe UI Light", "Segoe UI Light Italic", "Segoe UI Semibold", "Segoe UI Semibold Italic", "Segoe UI Semilight", "Segoe UI Semilight Italic", "Segoe UI Symbol", "Serif Bold", "Serif Bold Italic", "Serif Italic", "Serif Regular", "Showcard Gothic", "SimSun", "SimSun-ExtB", "Sitka Banner", "Sitka Banner Bold", "Sitka Banner Bold Italic", "Sitka Banner Italic", "Sitka Display", "Sitka Display Bold", "Sitka Display Bold Italic", "Sitka Display Italic", "Sitka Heading", "Sitka Heading Bold", "Sitka Heading Bold Italic", "Sitka Heading Italic", "Sitka Small", "Sitka Small Bold", "Sitka Small Bold Italic", "Sitka Small Italic", "Sitka Subheading", "Sitka Subheading Bold", "Sitka Subheading Bold Italic", "Sitka Subheading Italic", "Sitka Text", "Sitka Text Bold", "Sitka Text Bold Italic", "Sitka Text Italic", "Snap ITC", "Stencil", "Sylfaen", "Symbol", "System Bold", "System Bold Italic", "System Italic", "System Regular", "Tahoma", "Tahoma Bold", "Tempus Sans ITC", "Times New Roman", "Times New Roman Bold", "Times New Roman Bold Italic", "Times New Roman Italic", "Trebuchet MS", "Trebuchet MS Bold", "Trebuchet MS Bold Italic", "Trebuchet MS Italic", "Tw Cen MT", "Tw Cen MT Bold", "Tw Cen MT Bold Italic", "Tw Cen MT Condensed", "Tw Cen MT Condensed Bold", "Tw Cen MT Condensed Extra Bold", "Tw Cen MT Italic", "Verdana", "Verdana Bold", "Verdana Bold Italic", "Verdana Italic", "Viner Hand ITC", "Vivaldi Italic", "Vladimir Script", "Webdings", "Wide Latin", "Wingdings", "Wingdings 2", "Wingdings 3", "Yu Gothic Bold", "Yu Gothic Light", "Yu Gothic Medium", "Yu Gothic Regular", "Yu Gothic UI Bold", "Yu Gothic UI Light", "Yu Gothic UI Regular", "Yu Gothic UI Semibold", "Yu Gothic UI Semilight" }));
+        jComboBox1.setSelectedIndex(3);
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox1ItemStateChanged(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -120,11 +116,6 @@ public class TextPanel extends javax.swing.JPanel {
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox2ItemStateChanged(evt);
-            }
-        });
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
             }
         });
 
@@ -139,6 +130,7 @@ public class TextPanel extends javax.swing.JPanel {
 
         buttonGroup1.add(jToggleButton3);
         jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/transparency.png"))); // NOI18N
+        jToggleButton3.setSelected(true);
         jToggleButton3.setText("Transparent");
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +148,6 @@ public class TextPanel extends javax.swing.JPanel {
 
         buttonGroup1.add(jToggleButton1);
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagebutton/opaque.png"))); // NOI18N
-        jToggleButton1.setSelected(true);
         jToggleButton1.setText("Opaque");
         jToggleButton1.setAlignmentY(0.0F);
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -202,8 +193,8 @@ public class TextPanel extends javax.swing.JPanel {
                         .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jComboBox1, 0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -239,10 +230,6 @@ public class TextPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
@@ -288,10 +275,6 @@ public class TextPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.setIsOpaque(false);
     }//GEN-LAST:event_jToggleButton3ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
         // TODO add your handling code here:

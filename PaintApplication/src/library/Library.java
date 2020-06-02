@@ -7,6 +7,7 @@ package library;
 
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class Library extends javax.swing.JFrame {
         this.main = main;
         this.setVisible(true);
         this.showImage(0);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagebutton/hust.png")));
     }
     public String[] getImages() {
         File file = new File(getClass().getResource("/libraryImage").getFile());
@@ -52,6 +54,7 @@ public class Library extends javax.swing.JFrame {
             Logger.getLogger(Library.class.getName()).log(Level.SEVERE, null, ex);
         }
         paintPanel.setImage(img);
+        paintPanel.clear();
         main.backgroundPanel.setPreferredSize(new Dimension(img.getWidth() + 5, img.getHeight() + 5));
         this.dispose();
     }
