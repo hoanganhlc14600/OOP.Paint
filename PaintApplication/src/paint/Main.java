@@ -226,6 +226,7 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialog1.setTitle("BK Paint");
         jDialog1.setAlwaysOnTop(true);
+        jDialog1.setLocationByPlatform(true);
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 120));
         jDialog1.setModal(true);
         jDialog1.setResizable(false);
@@ -290,6 +291,11 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         setBackground(new java.awt.Color(255, 51, 102));
         setLocationByPlatform(true);
         setName("MainFrame"); // NOI18N
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setToolTipText("");
@@ -1110,7 +1116,9 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         saveImage();
         jDialog1.dispose();
         paintPanel.clear();
-        paintPanel.setImage(img);
+        if (img != null) {
+            paintPanel.setImage(img);
+        }
         backgroundPanel.setPreferredSize(new Dimension(paintPanel.getWidth()+5,paintPanel.getHeight()+5));
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1118,7 +1126,9 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         // TODO add your handling code here:
         jDialog1.dispose();
         paintPanel.clear();
-        paintPanel.setImage(img);
+        if (img != null) {
+            paintPanel.setImage(img);
+        }
         backgroundPanel.setPreferredSize(new Dimension(paintPanel.getWidth()+5,paintPanel.getHeight()+5));
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -1133,6 +1143,13 @@ public class Main extends javax.swing.JFrame implements ActionListener{
         paintPanel.getReplay().push(paintPanel.getImage());
         replayDialog = new ReplayDialog(this, true,paintPanel.getReplay());
     }//GEN-LAST:event_jRecordActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        if (!paintPanel.isSaved) {
+            jDialog1.setVisible(true);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     @Override
     public void actionPerformed(ActionEvent e) {
