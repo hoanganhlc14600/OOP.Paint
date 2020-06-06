@@ -273,9 +273,9 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             copy_img.getRaster().setPixels(0, 0, w, h, data);
             Graphics2D g = (Graphics2D) buff_img.getGraphics();
             g.setColor(Color.WHITE);
-            g.fillRect(select.getStartPoint().x, select.getStartOrigin().y, w, h);
-            repaint();
+            g.fillRect(select.getStartOrigin().x, select.getStartOrigin().y, w, h);
             select = null;
+            repaint();
             g.dispose();
         }
     }
@@ -287,6 +287,8 @@ public class PaintPanel extends javax.swing.JPanel implements MouseListener, Mou
             int h = select.getHeight();
             copy_img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
             copy_img.getRaster().setPixels(0, 0, w, h, data);
+            select = null;
+            repaint();
         }
         
     }
