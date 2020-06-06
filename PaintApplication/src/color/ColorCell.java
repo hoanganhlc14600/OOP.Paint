@@ -17,7 +17,7 @@ public class ColorCell extends ImageIcon{
     private int width;
     private int height;
     private int align;
-    private Color color = Color.WHITE; 
+    private Color color; 
 
     public ColorCell(Color color, int width, int height, int align) {
         this.color = color;

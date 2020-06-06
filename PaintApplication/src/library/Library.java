@@ -38,14 +38,13 @@ public class Library extends javax.swing.JFrame {
         this.showImage(0);
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagebutton/hust.png")));
     }
-    public String[] getImages() {
-        File file = new File(getClass().getResource("/libraryImage").getFile());
-        String[] imagesList = file.list();
+    public String[] getImagesList() {
+          String[] imagesList = {"a.png", "b.png"};
         return imagesList;
     }
     
     public void setImage() {
-        String[] imagesList = getImages();
+        String[] imagesList = getImagesList();
         String imageName = imagesList[index];
         BufferedImage img = null;
         try {
@@ -60,7 +59,7 @@ public class Library extends javax.swing.JFrame {
     }
     
     public void showImage(int index) {
-        String[] imagesList = getImages();
+        String[] imagesList = getImagesList();
         String imageName = imagesList[index];
         ImageIcon icon = new ImageIcon(getClass().getResource("/libraryImage/"+imageName));
         Image image = icon.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
@@ -157,14 +156,14 @@ public class Library extends javax.swing.JFrame {
         if (index != 0) {
             index--;
         } else {
-            index = getImages().length - 1;
+            index = getImagesList().length - 1;
         }
         showImage(index);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if (index != getImages().length - 1) {
+        if (index != getImagesList().length - 1) {
             index ++;
         } else {
             index = 0;

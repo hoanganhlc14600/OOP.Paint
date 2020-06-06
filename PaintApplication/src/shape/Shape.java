@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 //Định dạng các kiểu nét vẽ 
 
-public class Shape implements Serializable {
+public class Shape {
     protected Color strokeColor;
     protected ArrayList <Point> arrPoint = new ArrayList<Point>();
     protected Point startPoint = new Point();
