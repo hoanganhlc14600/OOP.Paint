@@ -17,24 +17,24 @@ public class Polygon extends Shape implements DrawType {
     public Polygon(){
         this.setStartPoint(null);
     }
-    private ArrayList<Line> listLine = new ArrayList<>(); //danh sách đường thẳng
-
-    public ArrayList<Line> getListLine() { 
-        return listLine;
-    }
-    
-    public void addLine(Line line) //thêm đường thẳng vào danh sách
-    {
-        listLine.add(line);
-    }
+//    private ArrayList<Line> listLine = new ArrayList<>(); //danh sách đường thẳng
+//
+//    public ArrayList<Line> getListLine() { 
+//        return listLine;
+//    }
+//    
+//    public void addLine(Line line) //thêm đường thẳng vào danh sách
+//    {
+//        listLine.add(line);
+//    }
 
     @Override
     public void draw(Graphics2D g2d) {
         
-        for(int i=0;i<listLine.size();i++)
-        {
-            listLine.get(i).draw(g2d);
-        }
+//        for(int i=0;i<listLine.size();i++)
+//        {
+//            listLine.get(i).draw(g2d);
+//        }
     }
     
     
